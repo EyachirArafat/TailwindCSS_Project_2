@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="tailwind.css">
   <title>Ticker AI</title>
 </head>
 <body class="bg-[#FAFAFA] text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
@@ -319,13 +319,56 @@
   </footer>
 
 
-  <script src="script.js">
+  <script type="module">
     /*
     const modeRun = document.getElementById('colorMode');
     document.getElementById('switchMode').addEventListener("click", function(){
       modeRun.classList.toggle("dark");
     })
     */
+
+    
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    darkModeToggle.addEventListener('click', function () {
+      document.documentElement.classList.toggle('dark');
+      
+      
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    (function () {
+      const userTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (userTheme === 'dark' || (!userTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+
+    function navigateToSection() {
+      const dropdown = document.getElementById('dropdown');
+      const selectedValue = dropdown.value;
+
+      if (selectedValue) {
+        const section = document.getElementById(selectedValue);
+
+        if (section) {
+          section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',   
+            inline: 'nearest'
+          });
+        }
+      }
+    }
+
   </script>
 </body>
 </html>

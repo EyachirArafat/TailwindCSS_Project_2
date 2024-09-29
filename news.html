@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="tailwind.css">
   <title>Ticker AI</title>
 </head>
 <body class="bg-[#FAFAFA] text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
@@ -38,7 +38,7 @@
   <div class="container-fluid mx-6 mt-4 h-full flex-grow min-h-screen">
     <h1 class="text-lg md:text-3xl font-bold border-b-2 border-b-gray-950 pb-1 mb-8">Personolize your news</h1>
     <div class="flex items-center justify-center">
-      <div class="bg-white dark:bg-gray-700 rounded-md flex items-center justify-center flex-col space-y-4 w-2/3 pb-8">
+      <div class="bg-white shadow-md dark:bg-gray-700 rounded-md flex items-center justify-center flex-col space-y-4 w-2/3 pb-8">
         <h3 class="pt-6 text-lg font-bold mb-4">Select your  Markets</h3>
         <span class="markets">Stocks</span>
         <span class="markets">Crypto</span>
@@ -58,6 +58,32 @@
   </footer>
 
 
-  <script src="script.js"></script>
+  <script type="module">
+   
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    darkModeToggle.addEventListener('click', function () {
+      document.documentElement.classList.toggle('dark');
+      
+      
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    (function () {
+      const userTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (userTheme === 'dark' || (!userTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  
+  </script>
 </body>
 </html>
