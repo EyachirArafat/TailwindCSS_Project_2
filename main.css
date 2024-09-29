@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities{
+  .news-tag{
+    @apply bg-gray-800 text-white font-semibold px-2 rounded-md md:text-base text-sm hover:scale-110 transition-transform cursor-pointer hover:bg-gray-950 uppercase
+  }
+
+  .coin-tag{
+    @apply bg-[#5677AC] bg-opacity-15 font-semibold px-2 rounded-sm md:text-base text-sm hover:scale-110 transition-transform cursor-pointer hover:bg-[#3968b4] hover:text-white uppercase
+  }
+
+  .news-card-head{
+    @apply flex flex-col md:flex-row items-center gap-4 border border-[#DDE2E5] rounded-md p-2 md:p-4 transition-transform duration-500 hover:scale-105 hover:bg-slate-100
+  }
+
+  .markets{
+    @apply bg-[#E6EBF3] hover:bg-[#c4d1e6] w-2/3 text-center py-3 rounded-full font-semibold cursor-pointer select-none transition-transform hover:scale-105 dark:bg-[#3c6cb9]
+  }
+
+  .hamburger-menu{
+    @apply hover:bg-[#5677AC] hover:text-white rounded-md hover:font-medium px-1 select-none dark:text-gray-200 dark:hover:text-gray-900
+  }
+
+
+}
+
+
+
+

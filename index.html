@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link rel="stylesheet" href="main.css">
+  <title>Ticker AI</title>
+</head>
+<body class="bg-[#FAFAFA] text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+
+  <!-- nav section -->
+  
+  <nav class="container-fluid px-6 py-4 md:py-6 flex items-center justify-between bg-white dark:bg-gray-900 fixed w-full dark:shadow-gray-700 z-50 top-0 left-0 shadow-md">
+    <div class="flex items-center gap-2 md:gap-4">
+      <a href="index.html">
+        <img class=" w-[80px] md:w-[85px]" src="assets/tickerAI-logo 1.png" alt="tickerAI-logo">
+      </a>
+      <p class="text-xs lg:text-lg md:text-base select-none hidden sm:block">A Mark Cuban Company<br>AI-based Financial Market News Aggregator</p>
+    </div>
+    <div class="flex items-center gap-3 md:gap-4">
+      <a href="news.html"><button class="border rounded-full px-3 p-2 md:px-3 bg-[#5677AC] text-white font-semibold text-nowrap hover:scale-105 transition-transform md:block hidden">Pesonalize News</button></a>
+
+      <h3 class="text-[#5677AC] bg-[#5677AC] hover:bg-[#5677AC] hover:text-white border-transparent  p-2 rounded-full flex items-center justify-center px-3 font-bold bg-opacity-15 size-11 cursor-pointer hover:scale-110 transition-transform"><a href="https://chatgpt.com/" target="_blank">AI</a></h3>
+
+      <i class="fa-regular fa-moon border-2 border-opacity-25 border-blue-500 p-2 rounded-full flex items-center justify-center px-3 font-bold bg-opacity-15 size-11 cursor-pointer hover:scale-110 transition-transform hover:bg-[#5677AC] hover:text-white" id="darkModeToggle"></i>
+
+      <i class="fa-solid fa-bars text-lg md:hidden" onclick="document.querySelector('.mobile-menu').classList.toggle('hidden');"></i>
+      <ul class="mobile-menu absolute top-20 right-3 flex-col space-y-2 bg-gray-100 dark:bg-gray-700 p-3 rounded-md hidden">
+        <li class="hamburger-menu"><a href="index.html">Home</a></li>
+        <li class="hamburger-menu"><a href="#">About us</a></li>
+        <li class="hamburger-menu"><a href="#">Contact us</a></li>
+        <li class="hamburger-menu"><a href="news.html"><button class="border rounded-full px-2 bg-[#5677AC] text-white font-semibold text-nowrap hover:scale-105 transition-transform select-none">Pesonalize News</button></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- header section -->
+  <section class="container-fluid bg-[url('assets/pexels-photo-8370752.png')] bg-cover bg-center bg-no-repeat h-auto flex items-center justify-center mb-4 md:pt-40 pt-20">
+    <div class="flex flex-col items-center justify-center my-4 w-full ">
+      <p class="bg-white my-6 md:m-10 px-4 font-bold md:text-[35px] text-[25px] italic dark:text-gray-900">tickerAI</p>
+      
+
+      <div class="w-1/2 lg:w-1/3">
+        <div class="flex items-center justify-center w-full  rounded-full">
+          <button type="button" class=" md:h-12 rounded-s-full flex items-center justify-center pr-3 pl-3 p-4 bg-slate-300 hover:bg-slate-500" onclick="document.getElementById('search').focus()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <input class="w-full h-12 pl-4 pr-10 rounded-e-full border-none outline-none placeholder:text-[16px] lg:placeholder:text-[18px] text-black" type="search" id="search" placeholder="Search any market topic...">
+        </div>
+        <p class="pl-6 pb-4 pt-2 text-white font-semibold text-[10px] md:text-[14px] lg:text-[16px]">There are 6 articles available for your preferences</p>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- News section -->
+
+  <section class="container-fluid grid grid-cols-12 mb-6 gap-5 mx-auto px-4">
+    <!-- all news section -->
+    <section class="md:col-span-9 col-span-12">
+      <div class="flex items-center justify-between border-b-2 border-b-gray-950 pb-1 dark:border-b-gray-600">
+        <h1 class="text-lg md:text-3xl font-bold">All News</h1>
+        <div class="flex items-center justify-end gap-2">
+          <p class="font-semibold">Filter by:</p>
+          <div class="flex items-center justify-end gap-1 cursor-pointer text-[14px] md:text-base " onclick="document.getElementById('dropdown').focus();">
+            <select name="" class="dark:bg-gray-900 outline-none focus:ring-1 rounded-full" id="dropdown" onchange="navigateToSection()">
+              <option value="select" disabled selected>Select once</option>
+              <option value="Individual">Individual</option>
+              <option value="Stock-Sectors">Stock Sectors</option>
+              <option value="Stock-Market-Topics">Stock Market Topics</option>
+              <option value="Coming-soon">Coming soon</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+      <div class="space-y-2 mb-4">
+        <p class="pt-6 text-base md:text-lg font-bold" id="Individual">Individual Stocks</p>
+
+        <!-- news card section -->
+        <!-- news card 1 -->
+        <div class="news-card-head">
+          <img class="w-full md:h-fll h-44 object-cover md:size-[150px]" src="assets/Rectangle 6.png" alt="image.png">
+          <div class="space-y-2">
+             <div class="flex items-center gap-3">
+              <span class="news-tag">Dow jones</span>
+              <span class="news-tag">Nasdaq</span>
+              <span class="news-tag">S & P 500</span>
+             </div>
+             <div>
+              <a href="">
+                <h3 class="font-bold md:text-lg dark:text-gray-400 text-gray-800 hover:text-sky-500 pb-1">Nzd/usd forex technical analysis - traders will be monitoring fed for future rate hike clues</h3>
+              </a>
+              <p class="text-sm md:text-base text-[#616161] dark:text-white">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet...</p>
+              <div class="flex gap-2 items-center pt-1">
+                <span class="text-[#616161]">06 September 2022</span>
+                <i class="fa-solid fa-circle text-[4px] text-white"></i>
+                <p class="text-[#616161]">By <a href="#" class="text-[#5677AC] font-bold">Shouvik Nath</a></p>
+              </div>
+             </div>
+          </div>
+        </div>
+
+        <!-- news card 2 -->
+        <div class="news-card-head">
+          <img class="w-full md:h-fll h-44 object-cover md:size-[150px]" src="assets/Rectangle 7.png" alt="image.png" >
+          <div class="space-y-2">
+             <div class="flex items-center gap-3">
+              <span class="news-tag">Dow jones</span>
+              <span class="news-tag">Nasdaq</span>
+              <span class="news-tag">S & P 500</span>
+             </div>
+             <div>
+              <a href="">
+                <h3 class="font-bold md:text-lg dark:text-gray-400 text-gray-800 hover:text-sky-500 pb-1">Rupee inches 5 paise higher to 77.99 against us dollar in early trade</h3>
+              </a>
+              <p class="text-sm md:text-base text-[#616161]">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet...</p>
+              <div class="flex gap-2 items-center pt-1">
+                <span class="text-[#616161]">06 September 2022</span>
+                <i class="fa-solid fa-circle text-[4px]"></i>
+                <p>By <a href="#" class="text-[#5677AC] font-bold">Amado</a></p>
+              </div>
+             </div>
+          </div>
+        </div>
+
+        <!-- news card 3 -->
+        <div class="news-card-head">
+          <img class="w-full md:h-fll h-44 object-cover md:size-[150px]" src="assets/Rectangle 8.png" alt="image.png" >
+          <div class="space-y-2">
+             <div class="flex items-center gap-3">
+              <span class="news-tag">wall street</span>
+              <span class="news-tag">Analyst coverage</span>
+             </div>
+             <div>
+              <a href="">
+                <h3 class="font-bold md:text-lg dark:text-gray-400 text-gray-800 hover:text-sky-500 pb-1">Rupee inches 5 paise higher to 77.99 against us dollar in early trade</h3>
+              </a>
+              <p class="text-sm md:text-base text-[#616161]">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet...</p>
+              <div class="flex gap-2 items-center pt-1">
+                <span class="text-[#616161]">06 September 2022</span>
+                <i class="fa-solid fa-circle text-[4px]"></i>
+                <p>By <a href="#" class="text-[#5677AC] font-bold">Amado</a></p>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="space-y-2 mb-8">
+        <p class="pt-6 text-base md:text-lg font-bold" id="Stock-Sectors">Stock Sectors</p>
+
+        <!-- news card 1 -->
+        <div class="news-card-head">
+          <img class="w-full md:h-fll h-44 object-cover md:size-[150px]" src="assets/Rectangle 9.png" alt="image.png">
+          <div class="space-y-2">
+             <div class="flex items-center gap-3">
+              <span class="news-tag">Dow jones</span>
+              <span class="news-tag">Nasdaq</span>
+              <span class="news-tag">S & P 500</span>
+             </div>
+             <div>
+              <a href="">
+                <h3 class="font-bold md:text-lg dark:text-gray-400 text-gray-800 hover:text-sky-500 pb-1">Nzd/usd forex technical analysis - traders will be monitoring fed for future rate hike clues</h3>
+              </a>
+              <p class="text-sm md:text-base text-[#616161]">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet...</p>
+              <div class="flex gap-2 items-center pt-1">
+                <span class="text-[#616161]">06 September 2022</span>
+                <i class="fa-solid fa-circle text-[4px]"></i>
+                <p>By <a href="#" class="text-[#5677AC] font-bold">Shouvik Nath</a></p>
+              </div>
+             </div>
+          </div>
+        </div>
+
+        <!-- news card 2 -->
+        <div class="news-card-head">
+          <img class="w-full md:h-fll h-44 object-cover md:size-[150px]" src="assets/Rectangle 10.png" alt="image.png" >
+          <div class="space-y-2">
+             <div class="flex items-center gap-3">
+              <span class="news-tag">Dow jones</span>
+              <span class="news-tag">Nasdaq</span>
+              <span class="news-tag">S & P 500</span>
+             </div>
+             <div>
+              <a href="">
+                <h3 class="font-bold md:text-lg dark:text-gray-400 text-gray-800 hover:text-sky-500 pb-1">Rupee inches 5 paise higher to 77.99 against us dollar in early trade</h3>
+              </a>
+              <p class="text-sm md:text-base text-[#616161]">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet...</p>
+              <div class="flex gap-2 items-center pt-1">
+                <span class="text-[#616161]">06 September 2022</span>
+                <i class="fa-solid fa-circle text-[4px]"></i>
+                <p>By <a href="#" class="text-[#5677AC] font-bold">Amado</a></p>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-2 mb-4">
+        <p class="pt-6 text-base md:text-lg font-bold" id="Stock-Market-Topics">Stock Market Topics</p>
+
+        <!-- news card 1 -->
+        <div class="news-card-head">
+          <img class="w-full md:h-fll h-44 object-cover md:size-[150px]" src="assets/Rectangle 11.png" alt="image.png">
+          <div class="space-y-2">
+             <div class="flex items-center gap-3">
+              <span class="news-tag">Dow jones</span>
+              <span class="news-tag">Nasdaq</span>
+              <span class="news-tag">S & P 500</span>
+             </div>
+             <div>
+              <a href="">
+                <h3 class="font-bold md:text-lg dark:text-gray-400 text-gray-800 hover:text-sky-500 pb-1">Nzd/usd forex technical analysis - traders will be monitoring fed for future rate hike clues</h3>
+              </a>
+              <p class="text-sm md:text-base text-[#616161]">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet...</p>
+              <div class="flex gap-2 items-center pt-1">
+                <span class="text-[#616161]">06 September 2022</span>
+                <i class="fa-solid fa-circle text-[4px]"></i>
+                <p>By <a href="#" class="text-[#5677AC] font-bold">Shouvik Nath</a></p>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        
+
+
+    <!-- features section -->
+     <section class="md:col-span-3 col-span-12">
+      <div class="border-b-2 border-b-gray-950 dark:border-b-gray-600 pb-1">
+        <h1 class="text-lg md:text-3xl font-bold">Featured</h1>
+      </div>
+      <div class="mb-8">
+        <p class="pt-6 text-base md:text-lg font-bold mb-2">Daily Rundowns</p>
+        <div class="flex flex-col md:flex-row items-center gap-4 border border-[#DDE2E5] rounded-md p-2 md:p-4">
+          
+          <div class="space-y-3">
+            <div class="">
+              <p class="font-bold text-md mb-3 ">Earnings:</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="coin-tag">Csan</span>
+                <span class="coin-tag">Alya</span>
+                <span class="coin-tag">Gato</span>
+                <span class="coin-tag">Css</span>
+                <span class="coin-tag">VZLA</span>
+                <span class="coin-tag">MFH</span>
+              </div>
+            </div>
+            <div class="">
+              <p class="font-bold text-md mb-3 ">Movers:</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="coin-tag">rev</span>
+                <span class="coin-tag">petv</span>
+                <span class="coin-tag">rytm</span>
+                <span class="coin-tag">srrk</span>
+                <span class="coin-tag">vera</span>
+                <span class="coin-tag">kzia</span>
+                <span class="coin-tag">sym</span>
+              </div>
+            </div>
+            <div class="">
+              <p class="font-bold text-md mb-3 ">Technicals:</p>
+              <div class="flex flex-wrap gap-3">
+                <span class="coin-tag">bearish</span>
+                <span class="coin-tag">regn</span>
+                <span class="coin-tag">tsla</span>
+                <span class="coin-tag">mcd</span>
+                <span class="coin-tag">bullish</span>
+                <span class="coin-tag">uso</span>
+                <span class="coin-tag">sedg</span>
+                <span class="coin-tag">enph</span>
+                <span class="coin-tag">shop</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-8 my-3">
+        <div class="flex flex-col gap-3">
+          <img class="object-cover w-full h-auto rounded-md" src="assets/Rectangle 182.png" alt="Rectangle 182">
+          <a class="hover:text-sky-500" href="">
+            <p class="font-bold font-base md:font-lg">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </p>
+          </a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <img class="object-cover w-full h-auto rounded-md" src="assets/Rectangle 183.png" alt="Rectangle 183">
+          <a class="hover:text-sky-500" href="">
+            <p class="font-bold font-base md:font-lg">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </p>
+          </a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <img class="object-cover w-full h-auto rounded-md" src="assets/Rectangle 184.png" alt="Rectangle 184">
+          <a class="hover:text-sky-500" href="">
+            <p class="font-bold font-base md:font-lg">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </p>
+          </a>
+        </div>
+      </div>
+
+     </section>
+  </section>
+
+
+  <div>
+    <p class="py-6 mx-auto text-3xl flex items-center justify-center text-center w-2/3" id="Coming-soon">"Exciting things are on the way! Stay tuned for updates. Thank you for your patience!"</p>
+  </div>
+
+  <!-- Footer section -->
+  
+  <footer class="flex items-center justify-center bg-slate-700 text-gray-300 font-semibold py-2 mt-9">
+    <p>Copyright &copy;<span class="text-sky-600 font-bold">EK</span> 2024  Creatives For You LTD</p>
+  </footer>
+
+
+  <script src="script.js">
+    /*
+    const modeRun = document.getElementById('colorMode');
+    document.getElementById('switchMode').addEventListener("click", function(){
+      modeRun.classList.toggle("dark");
+    })
+    */
+  </script>
+</body>
+</html>
+
+

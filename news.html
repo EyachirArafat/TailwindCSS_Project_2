@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="main.css">
+  <title>Ticker AI</title>
+</head>
+<body class="bg-[#FAFAFA] text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+  <!-- nav section -->
+  <nav class="container-fluid px-6 py-4 md:py-7 flex flex-grow items-center justify-between bg-white dark:bg-gray-900 dark:text-white h-full z-5 shadow-md dark:shadow-gray-700">
+    <div class="flex items-center gap-2 md:gap-4">
+      <a class="" href="index.html">
+        <img class="w-[80px] md:w-[85px]" src="assets/tickerAI-logo 1.png" alt="tickerAI-logo">
+      </a>
+      <p class="text-xs lg:text-lg md:text-base select-none hidden sm:block">A Mark Cuban Company<br>AI-based Financial Market News Aggregator</p>
+    </div>
+    <div class="flex items-center gap-3 md:gap-4">
+      <a href="news.html"><button class="border rounded-full px-3 p-2 md:px-3 bg-[#5677AC] text-white font-semibold text-nowrap hover:scale-105 transition-transform md:block hidden">Pesonalize News</button></a>
+      <h3 class="text-[#5677AC] bg-[#5677AC] hover:bg-[#5677AC] hover:text-white border-transparent  p-2 rounded-full flex items-center justify-center px-3 font-bold bg-opacity-15 size-11 cursor-pointer hover:scale-110 transition-transform"><a href="https://chatgpt.com/" target="_blank">AI</a></h3>
+
+      <i class="fa-regular fa-moon border-2 border-opacity-25 border-blue-500 p-2 rounded-full flex items-center justify-center px-3 font-bold bg-opacity-15 size-11 cursor-pointer hover:scale-110 transition-transform hover:bg-[#5677AC] hover:text-white" id="darkModeToggle"></i>
+
+      <i class="fa-solid fa-bars text-lg md:hidden" onclick="document.querySelector('.mobile-menu').classList.toggle('hidden');"></i>
+
+      <ul class="mobile-menu absolute top-20 right-3 flex-col space-y-2 dark:bg-gray-600 bg-gray-200 p-3 rounded-md hidden">
+        <li class="hamburger-menu"><a href="index.html">Home</a></li>
+        <li class="hamburger-menu"><a href="#">About us</a></li>
+        <li class="hamburger-menu"><a href="#">Contact us</a></li>
+        <li class="hamburger-menu"><a href="news.html"><button class="border rounded-full px-2 bg-[#5677AC] text-white font-semibold text-nowrap hover:scale-105 transition-transform select-none">Pesonalize News</button></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- personalize-section -->
+  <div class="container-fluid mx-6 mt-4 h-full flex-grow min-h-screen">
+    <h1 class="text-lg md:text-3xl font-bold border-b-2 border-b-gray-950 pb-1 mb-8">Personolize your news</h1>
+    <div class="flex items-center justify-center">
+      <div class="bg-white dark:bg-gray-700 rounded-md flex items-center justify-center flex-col space-y-4 w-2/3 pb-8">
+        <h3 class="pt-6 text-lg font-bold mb-4">Select your  Markets</h3>
+        <span class="markets">Stocks</span>
+        <span class="markets">Crypto</span>
+        <span class="markets">Economy & Business</span>
+        <span class="markets">Commodities | Forex</span>
+        <span class="markets">Fixed Income</span><br>
+        <button class="bg-[#5677AC] w-2/3 text-center text-lg font-bold py-3 text-white rounded-lg transition-transform hover:scale-105 hover:bg-[#395d97]">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Footer section -->
+  
+  <footer class="flex items-center justify-center bg-slate-700 text-gray-300 font-semibold py-2">
+    <p>Copyright &copy;<span class="text-sky-600 font-bold">EK</span> 2024  Creatives For You LTD</p>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
