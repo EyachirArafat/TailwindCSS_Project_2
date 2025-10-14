@@ -1,0 +1,97 @@
+{
+  "marketData": {
+    "indices": [
+      {
+        "symbol": "SPX",
+        "name": "S&P 500",
+        "value": 4567.89,
+        "change": 45.23,
+        "changePercent": 1.00
+      },
+      {
+        "symbol": "DJI",
+        "name": "Dow Jones",
+        "value": 35678.90,
+        "change": -123.45,
+        "changePercent": -0.34
+      },
+      {
+        "symbol": "IXIC",
+        "name": "NASDAQ",
+        "value": 14567.89,
+        "change": 234.56,
+        "changePercent": 1.64
+      }
+    ],
+    "stocks": [
+      {
+        "symbol": "AAPL",
+        "name": "Apple Inc.",
+        "price": 189.84,
+        "change": 2.34,
+        "changePercent": 1.25,
+        "volume": 52345678,
+        "marketCap": 2950000000000
+      },
+      {
+        "symbol": "NVDA",
+        "name": "NVIDIA Corporation",
+        "price": 878.35,
+        "change": 45.67,
+        "changePercent": 5.48,
+        "volume": 45678901,
+        "marketCap": 2170000000000
+      }
+    ],
+    "crypto": [
+      {
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "price": 67234.56,
+        "change": 1234.56,
+        "changePercent": 1.87,
+        "volume": 23456789012,
+        "marketCap": 1315000000000
+      },
+      {
+        "symbol": "ETH",
+        "name": "Ethereum",
+        "price": 3456.78,
+        "change": -56.78,
+        "changePercent": -1.62,
+        "volume": 12345678901,
+        "marketCap": 415000000000
+      }
+    ]
+  },
+  "news": [
+    {
+      "id": 1,
+      "title": "Federal Reserve Signals Potential Rate Cuts in 2024",
+      "summary": "The Federal Reserve indicated today that interest rate cuts could be on the horizon as inflation shows signs of cooling.",
+      "content": "Full article content here...",
+      "author": "John Doe",
+      "source": "Bloomberg",
+      "category": "economy",
+      "tags": ["Fed", "Interest Rates", "Economy"],
+      "publishedAt": "2024-01-15T10:30:00Z",
+      "image": "/assets/images/news1.jpg",
+      "views": 12345,
+      "likes": 234
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "avatar": "/assets/images/avatar.jpg",
+      "role": "premium",
+      "portfolio": {
+        "totalValue": 245890,
+        "positions": 24,
+        "cash": 12500
+      }
+    }
+  ]
+}

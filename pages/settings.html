@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - TickerAI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/tailwind.css" />
+    <!-- <link rel="stylesheet" href="../css/custom.css"> -->
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="container mx-auto px-4 py-8 mt-16">
+      <h1 class="text-3xl font-bold mb-8">Settings</h1>
+
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Settings Navigation -->
+        <aside class="col-span-12 md:col-span-3">
+          <nav class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+            <button class="settings-nav-item active" data-section="profile">
+              <i class="fas fa-user"></i> Profile
+            </button>
+            <button class="settings-nav-item" data-section="preferences">
+              <i class="fas fa-sliders-h"></i> Preferences
+            </button>
+            <button class="settings-nav-item" data-section="notifications">
+              <i class="fas fa-bell"></i> Notifications
+            </button>
+            <button class="settings-nav-item" data-section="security">
+              <i class="fas fa-lock"></i> Security
+            </button>
+            <button class="settings-nav-item" data-section="billing">
+              <i class="fas fa-credit-card"></i> Billing
+            </button>
+            <button class="settings-nav-item" data-section="api">
+              <i class="fas fa-code"></i> API Keys
+            </button>
+            <button class="settings-nav-item" data-section="data">
+              <i class="fas fa-database"></i> Data & Privacy
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Settings Content -->
+        <main class="col-span-12 md:col-span-9">
+          <!-- Profile Section -->
+          <section id="profile" class="settings-section">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Profile Settings</h2>
+
+              <div class="flex items-center gap-6 mb-6">
+                <div class="relative">
+                  <img
+                    src="../assets/avatar.jpg"
+                    alt="Profile"
+                    class="w-24 h-24 rounded-full"
+                  />
+                  <button
+                    class="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700"
+                  >
+                    <i class="fas fa-camera text-xs"></i>
+                  </button>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">John Doe</h3>
+                  <p class="text-gray-500">john.doe@example.com</p>
+                  <p class="text-sm text-green-600 mt-1">Premium Member</p>
+                </div>
+              </div>
+
+              <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-semibold mb-2"
+                      >First Name</label
+                    >
+                    <input type="text" value="John" class="settings-input" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold mb-2"
+                      >Last Name</label
+                    >
+                    <input type="text" value="Doe" class="settings-input" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Email</label>
+                  <input
+                    type="email"
+                    value="john.doe@example.com"
+                    class="settings-input"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    value="+1 (555) 123-4567"
+                    class="settings-input"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Bio</label>
+                  <textarea rows="3" class="settings-input">
+Experienced investor focusing on tech stocks and cryptocurrency.</textarea
+                  >
+                </div>
+
+                <button
+                  type="submit"
+                  class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  Save Changes
+                </button>
+              </form>
+            </div>
+          </section>
+
+          <!-- Preferences Section -->
+          <section id="preferences" class="settings-section hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Preferences</h2>
+
+              <div class="space-y-6">
+                <div>
+                  <h3 class="font-semibold mb-3">Display Settings</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <span>Dark Mode</span>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <span>Compact View</span>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <span>Show Percentage Changes</span>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Market Preferences</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <label class="block text-sm mb-2">Default Market</label>
+                      <select class="settings-input">
+                        <option>US Markets</option>
+                        <option>European Markets</option>
+                        <option>Asian Markets</option>
+                        <option>Cryptocurrency</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-2">Currency</label>
+                      <select class="settings-input">
+                        <option>USD ($)</option>
+                        <option>EUR (€)</option>
+                        <option>GBP (£)</option>
+                        <option>JPY (¥)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Data Refresh</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <label class="block text-sm mb-2"
+                        >Auto-refresh Interval</label
+                      >
+                      <select class="settings-input">
+                        <option>Real-time</option>
+                        <option>Every 5 seconds</option>
+                        <option>Every 15 seconds</option>
+                        <option>Every 30 seconds</option>
+                        <option>Manual only</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  Save Preferences
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Notifications Section -->
+          <section id="notifications" class="settings-section hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Notification Settings</h2>
+
+              <div class="space-y-6">
+                <div>
+                  <h3 class="font-semibold mb-3">Email Notifications</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Daily Market Summary</p>
+                        <p class="text-sm text-gray-500">
+                          Get daily market recap at market close
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Price Alerts</p>
+                        <p class="text-sm text-gray-500">
+                          Notify when stocks hit target prices
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>News Alerts</p>
+                        <p class="text-sm text-gray-500">
+                          Breaking news for your watchlist
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Push Notifications</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Browser Notifications</p>
+                        <p class="text-sm text-gray-500">
+                          Real-time alerts in your browser
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Mobile Notifications</p>
+                        <p class="text-sm text-gray-500">
+                          Get alerts on your mobile device
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                  </div>
+                </div>
+
+                <button
+                  class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  Save Notification Settings
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="../js/settings.js"></script>
+    <script src="../js/components.js"></script>
+  </body>
+</html>

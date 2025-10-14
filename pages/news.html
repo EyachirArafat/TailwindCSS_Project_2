@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Latest financial news and market updates - TickerAI"
+    />
+    <title>Financial News - TickerAI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/tailwind.css" />
+    <!-- <link rel="stylesheet" href="../css/custom.css" /> -->
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- News Header with Live Updates -->
+    <section
+      class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white pt-24 pb-12"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h1 class="text-4xl font-bold mb-2">Financial News</h1>
+            <p class="text-blue-100">Real-time updates from global markets</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-3 py-1 bg-white/20 rounded-full text-sm">
+              <i class="fas fa-circle text-green-400 text-xs animate-pulse"></i>
+              Live
+            </span>
+            <span class="text-sm"
+              >Last updated: <span id="lastUpdate">Just now</span></span
+            >
+          </div>
+        </div>
+
+        <!-- News Categories -->
+        <div class="flex flex-wrap gap-2 mt-6">
+          <button class="category-pill active" data-category="all">
+            All News
+          </button>
+          <button class="category-pill" data-category="stocks">Stocks</button>
+          <button class="category-pill" data-category="crypto">Crypto</button>
+          <button class="category-pill" data-category="forex">Forex</button>
+          <button class="category-pill" data-category="commodities">
+            Commodities
+          </button>
+          <button class="category-pill" data-category="economy">Economy</button>
+          <button class="category-pill" data-category="analysis">
+            Analysis
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Left Sidebar - Filters -->
+        <aside class="col-span-12 lg:col-span-3">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sticky top-24"
+          >
+            <h3 class="font-bold text-lg mb-4">Filters</h3>
+
+            <!-- Date Range -->
+            <div class="mb-6">
+              <label class="block text-sm font-semibold mb-2">Date Range</label>
+              <select
+                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700"
+              >
+                <option>Today</option>
+                <option>This Week</option>
+                <option>This Month</option>
+                <option>Custom Range</option>
+              </select>
+            </div>
+
+            <!-- Source Filter -->
+            <div class="mb-6">
+              <label class="block text-sm font-semibold mb-2">Sources</label>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-2" checked />
+                  <span class="text-sm">Bloomberg</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-2" checked />
+                  <span class="text-sm">Reuters</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-2" checked />
+                  <span class="text-sm">CNBC</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-2" />
+                  <span class="text-sm">WSJ</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Sentiment Filter -->
+            <div class="mb-6">
+              <label class="block text-sm font-semibold mb-2"
+                >Market Sentiment</label
+              >
+              <div class="flex gap-2">
+                <button class="sentiment-btn" data-sentiment="bullish">
+                  <i class="fas fa-arrow-up"></i> Bullish
+                </button>
+                <button class="sentiment-btn" data-sentiment="bearish">
+                  <i class="fas fa-arrow-down"></i> Bearish
+                </button>
+              </div>
+            </div>
+
+            <!-- Saved Searches -->
+            <div>
+              <label class="block text-sm font-semibold mb-2"
+                >Saved Searches</label
+              >
+              <div class="space-y-2">
+                <button class="saved-search-item">
+                  <i class="fas fa-search"></i> Tech Stocks
+                </button>
+                <button class="saved-search-item">
+                  <i class="fas fa-search"></i> Crypto News
+                </button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main News Content -->
+        <main class="col-span-12 lg:col-span-6">
+          <!-- Search Bar -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
+            <div class="flex gap-2">
+              <input
+                type="text"
+                placeholder="Search news..."
+                class="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700"
+              />
+              <button
+                class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- News Feed -->
+          <div id="newsFeed" class="space-y-6">
+            <!-- Loading State -->
+            <div class="news-skeleton hidden">
+              <div class="animate-pulse">
+                <div
+                  class="h-48 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"
+                ></div>
+                <div
+                  class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"
+                ></div>
+              </div>
+            </div>
+
+            <!-- News Article Card -->
+            <article class="news-article-card">
+              <div class="flex gap-4">
+                <img
+                  src="../assets/images/news-thumb.jpg"
+                  alt="News"
+                  class="w-32 h-32 object-cover rounded-lg"
+                />
+                <div class="flex-1">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="flex gap-2 mb-2">
+                        <span class="news-tag">Breaking</span>
+                        <span class="news-tag">Fed</span>
+                      </div>
+                      <h3
+                        class="font-bold text-lg mb-2 hover:text-blue-600 cursor-pointer"
+                      >
+                        Federal Reserve Maintains Interest Rates, Signals Future
+                        Cuts
+                      </h3>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                        The Federal Reserve decided to keep interest rates
+                        unchanged at their latest meeting...
+                      </p>
+                    </div>
+                    <button class="text-gray-400 hover:text-blue-600">
+                      <i class="fas fa-bookmark"></i>
+                    </button>
+                  </div>
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-500"
+                  >
+                    <div class="flex items-center gap-4">
+                      <span><i class="fas fa-clock"></i> 2 hours ago</span>
+                      <span><i class="fas fa-eye"></i> 1.2k views</span>
+                    </div>
+                    <div class="flex gap-2">
+                      <button class="hover:text-blue-600">
+                        <i class="fas fa-share"></i>
+                      </button>
+                      <button class="hover:text-red-600">
+                        <i class="fas fa-heart"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- More news articles... -->
+            <article class="news-article-card">
+              <div class="flex gap-4">
+                <img
+                  src="../assets/images/crypto-news.jpg"
+                  alt="Crypto News"
+                  class="w-32 h-32 object-cover rounded-lg"
+                />
+                <div class="flex-1">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="flex gap-2 mb-2">
+                        <span class="news-tag">Crypto</span>
+                        <span class="news-tag">Bitcoin</span>
+                      </div>
+                      <h3
+                        class="font-bold text-lg mb-2 hover:text-blue-600 cursor-pointer"
+                      >
+                        Bitcoin Surges Past $70,000 as ETF Inflows Accelerate
+                      </h3>
+                      <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                        Bitcoin reached a new yearly high as institutional
+                        investors continue to pour money...
+                      </p>
+                    </div>
+                    <button class="text-gray-400 hover:text-blue-600">
+                      <i class="fas fa-bookmark"></i>
+                    </button>
+                  </div>
+                  <div
+                    class="flex items-center justify-between text-sm text-gray-500"
+                  >
+                    <div class="flex items-center gap-4">
+                      <span><i class="fas fa-clock"></i> 4 hours ago</span>
+                      <span><i class="fas fa-eye"></i> 3.5k views</span>
+                    </div>
+                    <div class="flex gap-2">
+                      <button class="hover:text-blue-600">
+                        <i class="fas fa-share"></i>
+                      </button>
+                      <button class="hover:text-red-600">
+                        <i class="fas fa-heart"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Load More Button -->
+            <div class="text-center pt-6">
+              <button
+                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Load More Articles
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="col-span-12 lg:col-span-3">
+          <!-- Trending Topics -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="font-bold text-lg mb-4">🔥 Trending Topics</h3>
+            <div class="space-y-3">
+              <div class="trending-item">
+                <span class="text-2xl font-bold text-gray-400">#1</span>
+                <div>
+                  <p class="font-semibold">Interest Rates</p>
+                  <p class="text-sm text-gray-500">2.3k articles</p>
+                </div>
+              </div>
+              <div class="trending-item">
+                <span class="text-2xl font-bold text-gray-400">#2</span>
+                <div>
+                  <p class="font-semibold">Bitcoin ETF</p>
+                  <p class="text-sm text-gray-500">1.8k articles</p>
+                </div>
+              </div>
+              <div class="trending-item">
+                <span class="text-2xl font-bold text-gray-400">#3</span>
+                <div>
+                  <p class="font-semibold">AI Stocks</p>
+                  <p class="text-sm text-gray-500">1.5k articles</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Market Movers -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="font-bold text-lg mb-4">📈 Market Movers</h3>
+            <div class="space-y-3">
+              <div class="market-mover">
+                <div class="flex justify-between items-center">
+                  <div>
+                    <p class="font-semibold">NVDA</p>
+                    <p class="text-sm text-gray-500">NVIDIA Corp</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-semibold text-green-600">+5.2%</p>
+                    <p class="text-sm">$878.35</p>
+                  </div>
+                </div>
+              </div>
+              <div class="market-mover">
+                <div class="flex justify-between items-center">
+                  <div>
+                    <p class="font-semibold">TSLA</p>
+                    <p class="text-sm text-gray-500">Tesla Inc</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-semibold text-red-600">-2.3%</p>
+                    <p class="text-sm">$238.45</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newsletter Signup -->
+          <div
+            class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg shadow-lg p-6 text-white"
+          >
+            <h3 class="font-bold text-lg mb-2">📬 Daily Digest</h3>
+            <p class="text-sm mb-4 opacity-90">
+              Get top stories delivered to your inbox
+            </p>
+            <input
+              type="email"
+              placeholder="Your email"
+              class="w-full px-4 py-2 rounded-lg text-gray-900 mb-3"
+            />
+            <button
+              class="w-full py-2 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100"
+            >
+              Subscribe
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/news.js"></script>
+  </body>
+</html>

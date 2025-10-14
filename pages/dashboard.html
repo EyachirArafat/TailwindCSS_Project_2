@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - TickerAI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/tailwind.css" />
+    <!-- <link rel="stylesheet" href="../css/custom.css" /> -->
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Dashboard Container -->
+    <div class="flex h-screen pt-16">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-white dark:bg-gray-800 shadow-lg">
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-6">
+            <img
+              src="../assets/images/avatar.jpg"
+              alt="User"
+              class="w-12 h-12 rounded-full"
+            />
+            <div>
+              <p class="font-semibold">John Doe</p>
+              <p class="text-sm text-gray-500">Premium Member</p>
+            </div>
+          </div>
+
+          <nav class="space-y-2">
+            <a href="#" class="sidebar-item active">
+              <i class="fas fa-chart-line"></i> Overview
+            </a>
+            <a href="portfolio.html" class="sidebar-item">
+              <i class="fas fa-briefcase"></i> Portfolio
+            </a>
+            <a href="#" class="sidebar-item">
+              <i class="fas fa-list"></i> Watchlist
+            </a>
+            <a href="#" class="sidebar-item">
+              <i class="fas fa-bell"></i> Alerts
+            </a>
+            <a href="analysis.html" class="sidebar-item">
+              <i class="fas fa-chart-bar"></i> Analysis
+            </a>
+            <a href="#" class="sidebar-item">
+              <i class="fas fa-history"></i> History
+            </a>
+            <a href="settings.html" class="sidebar-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Header -->
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold mb-2">Dashboard</h1>
+          <p class="text-gray-600 dark:text-gray-400">
+            Welcome back! Here's your market overview.
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          <!-- Stat Card 1 -->
+          <div class="stat-card">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-gray-500 text-sm">Portfolio Value</p>
+                <p class="text-2xl font-bold mt-1">$125,430</p>
+                <p class="text-green-600 text-sm mt-2">
+                  <i class="fas fa-arrow-up"></i> +12.5%
+                </p>
+              </div>
+              <div class="icon-box bg-blue-100 text-blue-600">
+                <i class="fas fa-wallet"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 2 -->
+          <div class="stat-card">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-gray-500 text-sm">Today's Gain</p>
+                <p class="text-2xl font-bold mt-1">$2,340</p>
+                <p class="text-green-600 text-sm mt-2">
+                  <i class="fas fa-arrow-up"></i> +1.87%
+                </p>
+              </div>
+              <div class="icon-box bg-green-100 text-green-600">
+                <i class="fas fa-chart-line"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 3 -->
+          <div class="stat-card">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-gray-500 text-sm">Active Positions</p>
+                <p class="text-2xl font-bold mt-1">24</p>
+                <p class="text-blue-600 text-sm mt-2">8 Buy, 16 Hold</p>
+              </div>
+              <div class="icon-box bg-purple-100 text-purple-600">
+                <i class="fas fa-briefcase"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stat Card 4 -->
+          <div class="stat-card">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-gray-500 text-sm">Win Rate</p>
+                <p class="text-2xl font-bold mt-1">68%</p>
+                <p class="text-gray-600 text-sm mt-2">Last 30 days</p>
+              </div>
+              <div class="icon-box bg-orange-100 text-orange-600">
+                <i class="fas fa-trophy"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <!-- Portfolio Performance Chart -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-bold text-lg">Portfolio Performance</h3>
+              <select class="text-sm border rounded px-2 py-1">
+                <option>1W</option>
+                <option>1M</option>
+                <option>3M</option>
+                <option>1Y</option>
+              </select>
+            </div>
+            <canvas id="portfolioChart" height="200"></canvas>
+          </div>
+
+          <!-- Asset Allocation -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h3 class="font-bold text-lg mb-4">Asset Allocation</h3>
+            <canvas id="allocationChart" height="200"></canvas>
+          </div>
+        </div>
+
+        <!-- Watchlist Table -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-lg">Watchlist</h3>
+            <button class="text-blue-600 hover:underline text-sm">
+              View All →
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b dark:border-gray-700">
+                  <th class="text-left py-3">Symbol</th>
+                  <th class="text-left py-3">Name</th>
+                  <th class="text-right py-3">Price</th>
+                  <th class="text-right py-3">Change</th>
+                  <th class="text-right py-3">Volume</th>
+                  <th class="text-center py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <td class="py-3 font-semibold">AAPL</td>
+                  <td class="py-3">Apple Inc.</td>
+                  <td class="py-3 text-right">$189.84</td>
+                  <td class="py-3 text-right text-green-600">+1.23%</td>
+                  <td class="py-3 text-right">52.3M</td>
+                  <td class="py-3 text-center">
+                    <button class="text-blue-600 hover:text-blue-800 mr-2">
+                      <i class="fas fa-chart-line"></i>
+                    </button>
+                    <button class="text-green-600 hover:text-green-800">
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+                <!-- More rows... -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>
