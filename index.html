@@ -30,12 +30,10 @@
 
     <title>TickerAI - AI-Powered Financial News Aggregator</title>
   </head>
-  <body
-    class="bg-[#FAFAFA] text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500"
-  >
+  <body class="bg-gray-900 text-gray-100 transition-colors duration-500">
     <!-- Enhanced Navigation with Dropdown -->
     <nav
-      class="navbar fixed top-0 w-full z-50 bg-white dark:bg-gray-900 shadow-md transition-all duration-300"
+      class="navbar fixed top-0 w-full z-50 bg-gray-900 shadow-md transition-all duration-300"
       id="navbar"
     >
       <div class="container mx-auto px-4">
@@ -45,14 +43,12 @@
             <a href="/" class="flex items-center gap-2">
               <img
                 class="h-10 md:h-12"
-                src="assets/tickerAI-logo 1.png"
+                src="assets/images/tickerAI-logo.png"
                 alt="TickerAI"
               />
               <div class="hidden sm:block">
                 <p class="text-sm font-semibold">A Mark Cuban Company</p>
-                <p class="text-xs text-gray-600 dark:text-gray-400">
-                  AI Financial Intelligence
-                </p>
+                <p class="text-xs text-gray-400">AI Financial Intelligence</p>
               </div>
             </a>
           </div>
@@ -107,16 +103,16 @@
             </button>
 
             <!-- Theme Toggle -->
-            <button class="icon-btn" id="themeToggle">
-              <i class="fas fa-moon dark:hidden"></i>
-              <i class="fas fa-sun hidden dark:block"></i>
-            </button>
+            <!-- <button class="icon-btn" id="themeToggle">
+              <i class="fas fa-moon hidden"></i>
+              <i class="fas fa-sun hidden block"></i>
+            </button> -->
 
             <!-- User Menu -->
             <div class="relative">
               <button class="user-menu-btn" onclick="toggleUserMenu()">
                 <img
-                  src="assets/user-avatar.jpg"
+                  src="assets/images/user-avatar.png"
                   alt="User"
                   class="w-8 h-8 rounded-full"
                 />
@@ -132,7 +128,7 @@
                 <a href="pages/settings.html" class="dropdown-item">
                   <i class="fas fa-cog"></i> Settings
                 </a>
-                <hr class="my-2 border-gray-200 dark:border-gray-700" />
+                <hr class="my-2 border-gray-200" />
                 <a href="pages/login.html" class="dropdown-item text-red-600">
                   <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
@@ -247,7 +243,7 @@
     </section>
 
     <!-- Market Overview Section -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <section class="py-16 bg-gray-800">
       <div class="container mx-auto px-4">
         <h2 class="section-title">Market Overview</h2>
 
@@ -335,7 +331,7 @@
         </div>
 
         <!-- Trending Stocks -->
-        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
+        <div class="bg-gray-900 rounded-xl p-6 shadow-lg">
           <div class="flex justify-between items-center mb-6">
             <h3 class="text-xl font-bold">🔥 Trending Now</h3>
             <a href="#" class="text-blue-600 hover:underline">View All →</a>
@@ -344,7 +340,7 @@
           <div class="overflow-x-auto">
             <table class="w-full">
               <thead>
-                <tr class="border-b dark:border-gray-700">
+                <tr class="border-b border-gray-700">
                   <th class="text-left py-3">Symbol</th>
                   <th class="text-left py-3">Company</th>
                   <th class="text-right py-3">Price</th>
@@ -354,9 +350,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
-                >
+                <tr class="border-b border-gray-700 hover:bg-gray-800">
                   <td class="py-3 font-semibold">NVDA</td>
                   <td class="py-3">NVIDIA Corp</td>
                   <td class="py-3 text-right">$878.35</td>
@@ -366,9 +360,7 @@
                     <div class="mini-chart">📈</div>
                   </td>
                 </tr>
-                <tr
-                  class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
-                >
+                <tr class="border-b border-gray-700 hover:bg-gray-800">
                   <td class="py-3 font-semibold">AAPL</td>
                   <td class="py-3">Apple Inc</td>
                   <td class="py-3 text-right">$189.84</td>
@@ -378,9 +370,7 @@
                     <div class="mini-chart">📈</div>
                   </td>
                 </tr>
-                <tr
-                  class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
-                >
+                <tr class="border-b border-gray-700 hover:bg-gray-800">
                   <td class="py-3 font-semibold">TSLA</td>
                   <td class="py-3">Tesla Inc</td>
                   <td class="py-3 text-right">$238.45</td>
@@ -409,7 +399,7 @@
               <i class="fas fa-brain"></i>
             </div>
             <h3 class="text-xl font-bold mb-3">Smart Analysis</h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-gray-400">
               AI-driven market analysis provides real-time insights and
               predictions based on millions of data points.
             </p>
@@ -424,7 +414,7 @@
               <i class="fas fa-newspaper"></i>
             </div>
             <h3 class="text-xl font-bold mb-3">Personalized News</h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-gray-400">
               Get news tailored to your portfolio and interests, filtered by our
               advanced AI algorithms.
             </p>
@@ -439,7 +429,7 @@
               <i class="fas fa-chart-pie"></i>
             </div>
             <h3 class="text-xl font-bold mb-3">Portfolio Optimizer</h3>
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-gray-400">
               Optimize your portfolio with AI recommendations based on your risk
               profile and goals.
             </p>
@@ -452,7 +442,7 @@
     </section>
 
     <!-- Latest News Section -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <section class="py-16 bg-gray-800">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-8">
           <h2 class="section-title">Latest Financial News</h2>
@@ -469,7 +459,7 @@
           <div class="lg:col-span-2">
             <article class="news-card-featured">
               <img
-                src="assets/news-main.jpg"
+                src="assets/images/finance-hero.png"
                 alt="Main News"
                 class="w-full h-64 object-cover rounded-t-xl"
               />
@@ -481,14 +471,14 @@
                 <h3 class="text-2xl font-bold mb-3">
                   Federal Reserve Signals Potential Rate Cuts in 2024
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                <p class="text-gray-400 mb-4">
                   The Federal Reserve indicated today that interest rate cuts
                   could be on the horizon as inflation shows signs of cooling...
                 </p>
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
                     <img
-                      src="assets/author.jpg"
+                      src="assets/images/user-avatar.png"
                       alt="Author"
                       class="w-10 h-10 rounded-full"
                     />
@@ -510,7 +500,7 @@
             <!-- News Item 1 -->
             <article class="news-card-small">
               <img
-                src="assets/news1.jpg"
+                src="assets/images/news-1.png"
                 alt="News"
                 class="w-24 h-24 object-cover rounded-lg"
               />
@@ -526,7 +516,7 @@
             <!-- News Item 2 -->
             <article class="news-card-small">
               <img
-                src="assets/news2.jpg"
+                src="assets/images/news-2.png"
                 alt="News"
                 class="w-24 h-24 object-cover rounded-lg"
               />
@@ -542,7 +532,7 @@
             <!-- News Item 3 -->
             <article class="news-card-small">
               <img
-                src="assets/news3.jpg"
+                src="assets/images/news-3.png"
                 alt="News"
                 class="w-24 h-24 object-cover rounded-lg"
               />
@@ -592,7 +582,7 @@
           <!-- Company Info -->
           <div>
             <img
-              src="assets/tickerAI-logo-white.png"
+              src="assets/images/tickerAI-logo.png"
               alt="TickerAI"
               class="h-10 mb-4"
             />

@@ -3,7 +3,7 @@
 class NewsManager {
   constructor() {
     this.articles = [];
-    this.currentCategory = 'all';
+    this.currentCategory = "all";
     this.currentPage = 1;
     this.isLoading = false;
     this.init();
@@ -16,26 +16,26 @@ class NewsManager {
     this.startLiveUpdates();
   }
 
-  async loadNews(category = 'all', append = false) {
+  async loadNews(category = "all", append = false) {
     if (this.isLoading) return;
-    
+
     this.isLoading = true;
     this.showLoadingState();
 
     try {
       const news = await this.fetchNews(category, this.currentPage);
-      
+
       if (append) {
         this.articles = [...this.articles, ...news];
       } else {
         this.articles = news;
       }
-      
+
       this.renderNews();
       this.updateLastUpdateTime();
     } catch (error) {
-      console.error('Error loading news:', error);
-      this.showError('Failed to load news');
+      console.error("Error loading news:", error);
+      this.showError("Failed to load news");
     } finally {
       this.isLoading = false;
       this.hideLoadingState();
@@ -49,40 +49,45 @@ class NewsManager {
         resolve([
           {
             id: 1,
-            title: 'Federal Reserve Maintains Interest Rates, Signals Future Cuts',
-            summary: 'The Federal Reserve decided to keep interest rates unchanged at their latest meeting...',
-            image: '/assets/images/news-thumb.jpg',
-            category: 'economy',
-            tags: ['Breaking', 'Fed'],
-            author: 'John Doe',
+            title:
+              "Federal Reserve Maintains Interest Rates, Signals Future Cuts",
+            summary:
+              "The Federal Reserve decided to keep interest rates unchanged at their latest meeting...",
+            image: "/assets/images/news-4.png",
+            category: "economy",
+            tags: ["Breaking", "Fed"],
+            author: "John Doe",
             timestamp: Date.now() - 2 * 60 * 60 * 1000, // 2 hours ago
             views: 1200,
             likes: 45,
-            bookmarked: false
+            bookmarked: false,
           },
           {
             id: 2,
-            title: 'Bitcoin Surges Past $70,000 as ETF Inflows Accelerate',
-            summary: 'Bitcoin reached a new yearly high as institutional investors continue to pour money...',
-            image: '/assets/images/crypto-news.jpg',
-            category: 'crypto',
-            tags: ['Crypto', 'Bitcoin'],
-            author: 'Jane Smith',
+            title: "Bitcoin Surges Past $70,000 as ETF Inflows Accelerate",
+            summary:
+              "Bitcoin reached a new yearly high as institutional investors continue to pour money...",
+            image: "/assets/images/news-5.png",
+            category: "crypto",
+            tags: ["Crypto", "Bitcoin"],
+            author: "Jane Smith",
             timestamp: Date.now() - 4 * 60 * 60 * 1000, // 4 hours ago
             views: 3500,
             likes: 120,
-            bookmarked: false
-          }
+            bookmarked: false,
+          },
         ]);
       }, 500);
     });
   }
 
   renderNews() {
-    const newsFeed = document.getElementById('newsFeed');
+    const newsFeed = document.getElementById("newsFeed");
     if (!newsFeed) return;
 
-    const newsHTML = this.articles.map(article => `
+    const newsHTML = this.articles
+      .map(
+        (article) => `
       <article class="news-article-card" data-article-id="${article.id}">
         <div class="flex gap-4">
           <img src="${article.image}" alt="${article.title}" 
@@ -91,33 +96,47 @@ class NewsManager {
             <div class="flex items-start justify-between">
               <div>
                 <div class="flex gap-2 mb-2">
-                  ${article.tags.map(tag => `
+                  ${article.tags
+                    .map(
+                      (tag) => `
                     <span class="news-tag">${tag}</span>
-                  `).join('')}
+                  `
+                    )
+                    .join("")}
                 </div>
                 <h3 class="font-bold text-lg mb-2 hover:text-blue-600 cursor-pointer" 
                     onclick="newsManager.openArticle(${article.id})">
                   ${article.title}
                 </h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                <p class="text-gray-400 text-sm mb-3">
                   ${article.summary}
                 </p>
               </div>
               <button class="text-gray-400 hover:text-blue-600" 
                       onclick="newsManager.toggleBookmark(${article.id})">
-                <i class="fas fa-bookmark ${article.bookmarked ? 'text-blue-600' : ''}"></i>
+                <i class="fas fa-bookmark ${
+                  article.bookmarked ? "text-blue-600" : ""
+                }"></i>
               </button>
             </div>
             <div class="flex items-center justify-between text-sm text-gray-500">
               <div class="flex items-center gap-4">
-                <span><i class="fas fa-clock"></i> ${this.getTimeAgo(article.timestamp)}</span>
-                <span><i class="fas fa-eye"></i> ${this.formatViews(article.views)}</span>
+                <span><i class="fas fa-clock"></i> ${this.getTimeAgo(
+                  article.timestamp
+                )}</span>
+                <span><i class="fas fa-eye"></i> ${this.formatViews(
+                  article.views
+                )}</span>
               </div>
               <div class="flex gap-2">
-                <button class="hover:text-blue-600" onclick="newsManager.shareArticle(${article.id})">
+                <button class="hover:text-blue-600" onclick="newsManager.shareArticle(${
+                  article.id
+                })">
                   <i class="fas fa-share"></i>
                 </button>
-                <button class="hover:text-red-600" onclick="newsManager.likeArticle(${article.id})">
+                <button class="hover:text-red-600" onclick="newsManager.likeArticle(${
+                  article.id
+                })">
                   <i class="fas fa-heart"></i> ${article.likes}
                 </button>
               </div>
@@ -125,50 +144,57 @@ class NewsManager {
           </div>
         </div>
       </article>
-    `).join('');
+    `
+      )
+      .join("");
 
     if (this.currentPage === 1) {
       newsFeed.innerHTML = newsHTML;
     } else {
-      newsFeed.insertAdjacentHTML('beforeend', newsHTML);
+      newsFeed.insertAdjacentHTML("beforeend", newsHTML);
     }
   }
 
   setupEventListeners() {
     // Category filters
-    document.querySelectorAll('.category-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
+    document.querySelectorAll(".category-pill").forEach((pill) => {
+      pill.addEventListener("click", () => {
         this.filterByCategory(pill.dataset.category);
       });
     });
 
     // Search functionality
-    const searchInput = document.querySelector('#newsSearch');
+    const searchInput = document.querySelector("#newsSearch");
     if (searchInput) {
-      searchInput.addEventListener('input', utils.debounce((e) => {
-        this.searchNews(e.target.value);
-      }, 500));
+      searchInput.addEventListener(
+        "input",
+        utils.debounce((e) => {
+          this.searchNews(e.target.value);
+        }, 500)
+      );
     }
 
     // Load more button
-    const loadMoreBtn = document.querySelector('#loadMoreBtn');
+    const loadMoreBtn = document.querySelector("#loadMoreBtn");
     if (loadMoreBtn) {
-      loadMoreBtn.addEventListener('click', () => {
+      loadMoreBtn.addEventListener("click", () => {
         this.currentPage++;
         this.loadNews(this.currentCategory, true);
       });
     }
 
     // Source filters
-    document.querySelectorAll('input[type="checkbox"][name="source"]').forEach(checkbox => {
-      checkbox.addEventListener('change', () => {
-        this.updateSourceFilters();
+    document
+      .querySelectorAll('input[type="checkbox"][name="source"]')
+      .forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+          this.updateSourceFilters();
+        });
       });
-    });
 
     // Sentiment filters
-    document.querySelectorAll('.sentiment-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+    document.querySelectorAll(".sentiment-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
         this.filterBySentiment(btn.dataset.sentiment);
       });
     });
@@ -176,8 +202,8 @@ class NewsManager {
 
   filterByCategory(category) {
     // Update active state
-    document.querySelectorAll('.category-pill').forEach(pill => {
-      pill.classList.toggle('active', pill.dataset.category === category);
+    document.querySelectorAll(".category-pill").forEach((pill) => {
+      pill.classList.toggle("active", pill.dataset.category === category);
     });
 
     this.currentCategory = category;
@@ -192,18 +218,22 @@ class NewsManager {
     }
 
     // Implement search
-    console.log('Searching for:', query);
+    console.log("Searching for:", query);
   }
 
   setupInfiniteScroll() {
-    window.addEventListener('scroll', utils.throttle(() => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-      
-      if (scrollTop + clientHeight >= scrollHeight - 100 && !this.isLoading) {
-        this.currentPage++;
-        this.loadNews(this.currentCategory, true);
-      }
-    }, 1000));
+    window.addEventListener(
+      "scroll",
+      utils.throttle(() => {
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 100 && !this.isLoading) {
+          this.currentPage++;
+          this.loadNews(this.currentCategory, true);
+        }
+      }, 1000)
+    );
   }
 
   startLiveUpdates() {
@@ -216,27 +246,28 @@ class NewsManager {
   async checkForNewArticles() {
     try {
       const latestNews = await this.fetchNews(this.currentCategory, 1);
-      const newArticles = latestNews.filter(article => 
-        !this.articles.find(a => a.id === article.id)
+      const newArticles = latestNews.filter(
+        (article) => !this.articles.find((a) => a.id === article.id)
       );
 
       if (newArticles.length > 0) {
         this.showNewArticlesNotification(newArticles.length);
       }
     } catch (error) {
-      console.error('Error checking for new articles:', error);
+      console.error("Error checking for new articles:", error);
     }
   }
 
   showNewArticlesNotification(count) {
-    const notification = document.createElement('div');
-    notification.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 cursor-pointer';
+    const notification = document.createElement("div");
+    notification.className =
+      "fixed top-20 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 cursor-pointer";
     notification.innerHTML = `
       <i class="fas fa-bell mr-2"></i>
-      ${count} new article${count > 1 ? 's' : ''} available. Click to refresh.
+      ${count} new article${count > 1 ? "s" : ""} available. Click to refresh.
     `;
-    
-    notification.addEventListener('click', () => {
+
+    notification.addEventListener("click", () => {
       this.loadNews(this.currentCategory);
       notification.remove();
     });
@@ -254,11 +285,11 @@ class NewsManager {
   }
 
   toggleBookmark(articleId) {
-    const article = this.articles.find(a => a.id === articleId);
+    const article = this.articles.find((a) => a.id === articleId);
     if (article) {
       article.bookmarked = !article.bookmarked;
       this.renderNews();
-      
+
       // Save to backend
       this.saveBookmark(articleId, article.bookmarked);
     }
@@ -266,18 +297,20 @@ class NewsManager {
 
   async saveBookmark(articleId, bookmarked) {
     // API call to save bookmark
-    console.log(`Article ${articleId} ${bookmarked ? 'bookmarked' : 'unbookmarked'}`);
+    console.log(
+      `Article ${articleId} ${bookmarked ? "bookmarked" : "unbookmarked"}`
+    );
   }
 
   shareArticle(articleId) {
-    const article = this.articles.find(a => a.id === articleId);
+    const article = this.articles.find((a) => a.id === articleId);
     if (!article) return;
 
     if (navigator.share) {
       navigator.share({
         title: article.title,
         text: article.summary,
-        url: `/pages/article.html?id=${articleId}`
+        url: `/pages/article.html?id=${articleId}`,
       });
     } else {
       // Fallback to copy link
@@ -288,15 +321,15 @@ class NewsManager {
   copyArticleLink(articleId) {
     const url = `${window.location.origin}/pages/article.html?id=${articleId}`;
     navigator.clipboard.writeText(url);
-    app.showNotification('Link copied to clipboard', 'success');
+    app.showNotification("Link copied to clipboard", "success");
   }
 
   likeArticle(articleId) {
-    const article = this.articles.find(a => a.id === articleId);
+    const article = this.articles.find((a) => a.id === articleId);
     if (article) {
       article.likes++;
       this.renderNews();
-      
+
       // Save to backend
       this.saveLike(articleId);
     }
@@ -309,12 +342,12 @@ class NewsManager {
 
   getTimeAgo(timestamp) {
     const seconds = Math.floor((Date.now() - timestamp) / 1000);
-    
-    if (seconds < 60) return 'Just now';
+
+    if (seconds < 60) return "Just now";
     if (seconds < 3600) return `${Math.floor(seconds / 60)} minutes ago`;
     if (seconds < 86400) return `${Math.floor(seconds / 3600)} hours ago`;
     if (seconds < 604800) return `${Math.floor(seconds / 86400)} days ago`;
-    
+
     return new Date(timestamp).toLocaleDateString();
   }
 
@@ -325,48 +358,48 @@ class NewsManager {
   }
 
   updateLastUpdateTime() {
-    const lastUpdate = document.getElementById('lastUpdate');
+    const lastUpdate = document.getElementById("lastUpdate");
     if (lastUpdate) {
-      lastUpdate.textContent = 'Just now';
+      lastUpdate.textContent = "Just now";
     }
   }
 
   showLoadingState() {
-    const skeleton = document.querySelector('.news-skeleton');
+    const skeleton = document.querySelector(".news-skeleton");
     if (skeleton) {
-      skeleton.classList.remove('hidden');
+      skeleton.classList.remove("hidden");
     }
   }
 
   hideLoadingState() {
-    const skeleton = document.querySelector('.news-skeleton');
+    const skeleton = document.querySelector(".news-skeleton");
     if (skeleton) {
-      skeleton.classList.add('hidden');
+      skeleton.classList.add("hidden");
     }
   }
 
   showError(message) {
-    app.showNotification(message, 'error');
+    app.showNotification(message, "error");
   }
 
   updateSourceFilters() {
     const selectedSources = Array.from(
       document.querySelectorAll('input[type="checkbox"][name="source"]:checked')
-    ).map(cb => cb.value);
+    ).map((cb) => cb.value);
 
-    console.log('Selected sources:', selectedSources);
+    console.log("Selected sources:", selectedSources);
     // Reload news with filtered sources
   }
 
   filterBySentiment(sentiment) {
-    console.log('Filtering by sentiment:', sentiment);
+    console.log("Filtering by sentiment:", sentiment);
     // Implement sentiment filtering
   }
 }
 
 // Initialize news manager
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('newsFeed')) {
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("newsFeed")) {
     window.newsManager = new NewsManager();
   }
 });

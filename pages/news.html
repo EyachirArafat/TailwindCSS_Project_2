@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/tailwind.css" />
     <!-- <link rel="stylesheet" href="../css/custom.css" /> -->
   </head>
-  <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+  <body class="bg-gray-900 transition-colors duration-300">
     <!-- Include Navbar -->
     <div id="navbar-placeholder"></div>
 
@@ -64,17 +64,13 @@
       <div class="grid grid-cols-12 gap-8">
         <!-- Left Sidebar - Filters -->
         <aside class="col-span-12 lg:col-span-3">
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sticky top-24"
-          >
+          <div class="bg-gray-800 rounded-lg shadow-lg p-6 sticky top-24">
             <h3 class="font-bold text-lg mb-4">Filters</h3>
 
             <!-- Date Range -->
             <div class="mb-6">
               <label class="block text-sm font-semibold mb-2">Date Range</label>
-              <select
-                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700"
-              >
+              <select class="w-full rounded-lg border-gray-600 bg-gray-700">
                 <option>Today</option>
                 <option>This Week</option>
                 <option>This Month</option>
@@ -140,12 +136,12 @@
         <!-- Main News Content -->
         <main class="col-span-12 lg:col-span-6">
           <!-- Search Bar -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
+          <div class="bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
             <div class="flex gap-2">
               <input
                 type="text"
                 placeholder="Search news..."
-                class="flex-1 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700"
+                class="flex-1 px-4 py-2 rounded-lg border border-gray-600 bg-gray-700"
               />
               <button
                 class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -160,15 +156,9 @@
             <!-- Loading State -->
             <div class="news-skeleton hidden">
               <div class="animate-pulse">
-                <div
-                  class="h-48 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4"
-                ></div>
-                <div
-                  class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"
-                ></div>
-                <div
-                  class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"
-                ></div>
+                <div class="h-48 bg-gray-700 rounded-lg mb-4"></div>
+                <div class="h-4 bg-gray-700 rounded w-3/4 mb-2"></div>
+                <div class="h-4 bg-gray-700 rounded w-1/2"></div>
               </div>
             </div>
 
@@ -193,7 +183,7 @@
                         Federal Reserve Maintains Interest Rates, Signals Future
                         Cuts
                       </h3>
-                      <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                      <p class="text-gray-400 text-sm mb-3">
                         The Federal Reserve decided to keep interest rates
                         unchanged at their latest meeting...
                       </p>
@@ -242,7 +232,7 @@
                       >
                         Bitcoin Surges Past $70,000 as ETF Inflows Accelerate
                       </h3>
-                      <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                      <p class="text-gray-400 text-sm mb-3">
                         Bitcoin reached a new yearly high as institutional
                         investors continue to pour money...
                       </p>
@@ -285,7 +275,7 @@
         <!-- Right Sidebar -->
         <aside class="col-span-12 lg:col-span-3">
           <!-- Trending Topics -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+          <div class="bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
             <h3 class="font-bold text-lg mb-4">🔥 Trending Topics</h3>
             <div class="space-y-3">
               <div class="trending-item">
@@ -313,7 +303,7 @@
           </div>
 
           <!-- Market Movers -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+          <div class="bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
             <h3 class="font-bold text-lg mb-4">📈 Market Movers</h3>
             <div class="space-y-3">
               <div class="market-mover">

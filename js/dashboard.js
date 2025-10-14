@@ -15,75 +15,79 @@ class Dashboard {
 
   initCharts() {
     // Portfolio Performance Chart
-    const portfolioCtx = document.getElementById('portfolioChart');
+    const portfolioCtx = document.getElementById("portfolioChart");
     if (portfolioCtx) {
       this.charts.portfolio = new Chart(portfolioCtx, {
-        type: 'line',
+        type: "line",
         data: {
           labels: this.generateDateLabels(30),
-          datasets: [{
-            label: 'Portfolio Value',
-            data: this.generateRandomData(30, 100000, 130000),
-            borderColor: '#3B82F6',
-            backgroundColor: '#3B82F620',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.4
-          }]
+          datasets: [
+            {
+              label: "Portfolio Value",
+              data: this.generateRandomData(30, 100000, 130000),
+              borderColor: "#3B82F6",
+              backgroundColor: "#3B82F620",
+              borderWidth: 2,
+              fill: true,
+              tension: 0.4,
+            },
+          ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
             legend: {
-              display: false
+              display: false,
             },
             tooltip: {
               callbacks: {
                 label: (context) => {
                   return `Value: ${utils.formatCurrency(context.parsed.y)}`;
-                }
-              }
-            }
+                },
+              },
+            },
           },
           scales: {
             y: {
               ticks: {
-                callback: (value) => utils.formatCurrency(value)
-              }
-            }
-          }
-        }
+                callback: (value) => utils.formatCurrency(value),
+              },
+            },
+          },
+        },
       });
     }
 
     // Asset Allocation Chart
-    const allocationCtx = document.getElementById('allocationChart');
+    const allocationCtx = document.getElementById("allocationChart");
     if (allocationCtx) {
       this.charts.allocation = new Chart(allocationCtx, {
-        type: 'doughnut',
+        type: "doughnut",
         data: {
-          labels: ['Stocks', 'ETFs', 'Crypto', 'Cash', 'Bonds'],
-          datasets: [{
-            data: [45, 20, 15, 10, 10],
-            backgroundColor: [
-              '#3B82F6',
-              '#10B981',
-              '#F59E0B',
-              '#EF4444',
-              '#8B5CF6'
-            ]
-          }]
+          labels: ["Stocks", "ETFs", "Crypto", "Cash", "Bonds"],
+          datasets: [
+            {
+              data: [45, 20, 15, 10, 10],
+              backgroundColor: [
+                "#3B82F6",
+                "#10B981",
+                "#F59E0B",
+                "#EF4444",
+                "#8B5CF6",
+              ],
+            },
+          ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
             legend: {
-              position: 'bottom'
-            }
-          }
-        }
+              position: "bottom",
+            },
+          },
+        },
       });
     }
   }
@@ -93,7 +97,9 @@ class Dashboard {
     for (let i = days - 1; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
-      labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+      labels.push(
+        date.toLocaleDateString("en-US", { month: "short", day: "numeric" })
+      );
     }
     return labels;
   }
@@ -101,7 +107,7 @@ class Dashboard {
   generateRandomData(count, min, max) {
     const data = [];
     let current = min + Math.random() * (max - min);
-    
+
     for (let i = 0; i < count; i++) {
       current += (Math.random() - 0.5) * ((max - min) / 20);
       current = Math.max(min, Math.min(max, current));
@@ -116,7 +122,7 @@ class Dashboard {
       const data = await this.fetchDashboardData();
       this.updateDashboardUI(data);
     } catch (error) {
-      console.error('Error loading dashboard data:', error);
+      console.error("Error loading dashboard data:", error);
     }
   }
 
@@ -129,7 +135,7 @@ class Dashboard {
           todayGain: 2340,
           todayGainPercent: 1.87,
           positions: 24,
-          winRate: 68
+          winRate: 68,
         });
       }, 1000);
     });
@@ -141,11 +147,13 @@ class Dashboard {
       portfolioValue: document.querySelector('[data-stat="portfolio-value"]'),
       todayGain: document.querySelector('[data-stat="today-gain"]'),
       positions: document.querySelector('[data-stat="positions"]'),
-      winRate: document.querySelector('[data-stat="win-rate"]')
+      winRate: document.querySelector('[data-stat="win-rate"]'),
     };
 
     if (elements.portfolioValue) {
-      elements.portfolioValue.textContent = utils.formatCurrency(data.portfolioValue);
+      elements.portfolioValue.textContent = utils.formatCurrency(
+        data.portfolioValue
+      );
     }
     if (elements.todayGain) {
       elements.todayGain.textContent = utils.formatCurrency(data.todayGain);
@@ -161,16 +169,16 @@ class Dashboard {
 
   setupEventListeners() {
     // Period selector for charts
-    document.querySelectorAll('.period-selector').forEach(selector => {
-      selector.addEventListener('change', (e) => {
+    document.querySelectorAll(".period-selector").forEach((selector) => {
+      selector.addEventListener("change", (e) => {
         this.updateChartPeriod(e.target.value);
       });
     });
 
     // Export functionality
-    const exportBtn = document.querySelector('.export-btn');
+    const exportBtn = document.querySelector(".export-btn");
     if (exportBtn) {
-      exportBtn.addEventListener('click', () => {
+      exportBtn.addEventListener("click", () => {
         this.exportDashboardData();
       });
     }
@@ -178,16 +186,21 @@ class Dashboard {
 
   updateChartPeriod(period) {
     // Update chart data based on selected period
-    const days = {
-      '1W': 7,
-      '1M': 30,
-      '3M': 90,
-      '1Y': 365
-    }[period] || 30;
+    const days =
+      {
+        "1W": 7,
+        "1M": 30,
+        "3M": 90,
+        "1Y": 365,
+      }[period] || 30;
 
     if (this.charts.portfolio) {
       this.charts.portfolio.data.labels = this.generateDateLabels(days);
-      this.charts.portfolio.data.datasets[0].data = this.generateRandomData(days, 100000, 130000);
+      this.charts.portfolio.data.datasets[0].data = this.generateRandomData(
+        days,
+        100000,
+        130000
+      );
       this.charts.portfolio.update();
     }
   }
@@ -195,24 +208,26 @@ class Dashboard {
   exportDashboardData() {
     // Export dashboard data as CSV
     const csvContent = this.generateCSV();
-    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const blob = new Blob([csvContent], { type: "text/csv" });
     const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `dashboard_${new Date().toISOString().split('T')[0]}.csv`;
+    a.download = `dashboard_${new Date().toISOString().split("T")[0]}.csv`;
     a.click();
   }
 
   generateCSV() {
     // Generate CSV content
-    return 'Date,Portfolio Value,Daily Gain,Win Rate\n' +
-           '2024-01-15,125430,2340,68%\n';
+    return (
+      "Date,Portfolio Value,Daily Gain,Win Rate\n" +
+      "2024-01-15,125430,2340,68%\n"
+    );
   }
 }
 
 // Initialize dashboard
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('portfolioChart')) {
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("portfolioChart")) {
     new Dashboard();
   }
 });

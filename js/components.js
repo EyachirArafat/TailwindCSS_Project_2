@@ -12,17 +12,17 @@ class ComponentLoader {
   }
 
   async loadNavbar() {
-    const placeholder = document.getElementById('navbar-placeholder');
+    const placeholder = document.getElementById("navbar-placeholder");
     if (!placeholder) return;
 
     const navbar = `
-      <nav class="navbar fixed top-0 w-full z-50 bg-white dark:bg-gray-900 shadow-md transition-all duration-300">
+      <nav class="navbar fixed top-0 w-full z-50 bg-gray-900 shadow-md transition-all duration-300">
         <div class="container mx-auto px-4">
           <div class="flex items-center justify-between py-4">
             <!-- Logo -->
             <div class="flex items-center gap-4">
               <a href="/index.html" class="flex items-center gap-2">
-                <img class="h-10" src="/assets/tickerAI-logo 1.png" alt="TickerAI">
+                <img class="h-10" src="/assets/images/tickerAI-logo.png" alt="TickerAI">
                 <span class="font-bold text-xl hidden sm:block">TickerAI</span>
               </a>
             </div>
@@ -46,13 +46,10 @@ class ComponentLoader {
                 <i class="fas fa-bell"></i>
                 <span class="notification-badge">3</span>
               </button>
-              <button class="icon-btn" id="themeToggle">
-                <i class="fas fa-moon dark:hidden"></i>
-                <i class="fas fa-sun hidden dark:block"></i>
-              </button>
+             
               <div class="relative">
                 <button class="user-avatar" onclick="toggleUserMenu()">
-                  <img src="/assets/images/avatar.jpg" alt="User" class="w-8 h-8 rounded-full">
+                  <img src="/assets/images/user-avatar.png" alt="User" class="w-8 h-8 rounded-full">
                 </button>
                 <div id="userMenu" class="user-dropdown hidden">
                   <a href="/pages/dashboard.html" class="dropdown-item">
@@ -64,7 +61,7 @@ class ComponentLoader {
                   <a href="/pages/settings.html" class="dropdown-item">
                     <i class="fas fa-cog"></i> Settings
                   </a>
-                  <hr class="my-2 border-gray-200 dark:border-gray-700">
+                  <hr class="my-2 border-gray-700">
                   <a href="/pages/login.html" class="dropdown-item text-red-600">
                     <i class="fas fa-sign-out-alt"></i> Logout
                   </a>
@@ -93,7 +90,7 @@ class ComponentLoader {
   }
 
   async loadFooter() {
-    const placeholder = document.getElementById('footer-placeholder');
+    const placeholder = document.getElementById("footer-placeholder");
     if (!placeholder) return;
 
     const footer = `
@@ -101,7 +98,7 @@ class ComponentLoader {
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <img src="/assets/tickerAI-logo 1.png" alt="TickerAI" class="h-10 mb-4 brightness-0 invert">
+              <img src="/assets/images/tickerAI-logo.png" alt="TickerAI" class="h-10 mb-4 brightness-0 invert">
               <p class="text-gray-400">AI-powered financial intelligence platform providing real-time market insights.</p>
               <div class="flex gap-3 mt-4">
                 <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -151,35 +148,35 @@ class ComponentLoader {
   initializeComponents() {
     // Setup global functions
     window.toggleUserMenu = () => {
-      const menu = document.getElementById('userMenu');
+      const menu = document.getElementById("userMenu");
       if (menu) {
-        menu.classList.toggle('hidden');
+        menu.classList.toggle("hidden");
       }
     };
 
     window.toggleMobileMenu = () => {
-      const menu = document.getElementById('mobileMenu');
+      const menu = document.getElementById("mobileMenu");
       if (menu) {
-        menu.classList.toggle('hidden');
+        menu.classList.toggle("hidden");
       }
     };
 
     window.openSearch = () => {
       // Implement search modal
-      console.log('Open search');
+      console.log("Open search");
     };
 
     window.openNotifications = () => {
       // Implement notifications panel
-      console.log('Open notifications');
+      console.log("Open notifications");
     };
 
     // Close dropdowns on outside click
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.user-avatar')) {
-        const userMenu = document.getElementById('userMenu');
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".user-avatar")) {
+        const userMenu = document.getElementById("userMenu");
         if (userMenu) {
-          userMenu.classList.add('hidden');
+          userMenu.classList.add("hidden");
         }
       }
     });
@@ -187,6 +184,6 @@ class ComponentLoader {
 }
 
 // Initialize components
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   new ComponentLoader();
 });
