@@ -8,11 +8,11 @@
   "license": "ISC",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
-    "postcss": "^8.4.47",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4.1.14"
   },
   "dependencies": {
-    "vite": "^5.4.7"
+    "vite": "^7.1.9"
   },
   "scripts": {
     "dev": "vite",
