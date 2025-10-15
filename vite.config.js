@@ -16,6 +16,7 @@ export default defineConfig({
         about: resolve(__dirname, "pages/about.html"),
         settings: resolve(__dirname, "pages/settings.html"),
         login: resolve(__dirname, "pages/login.html"),
+        notFound: resolve(__dirname, "404.html"),
       },
     },
   },
