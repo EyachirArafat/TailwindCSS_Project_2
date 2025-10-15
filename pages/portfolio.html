@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - TickerAI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/tailwind.css" />
+    <!-- <link rel="stylesheet" href="../css/custom.css"> -->
+  </head>
+  <body class="bg-gray-900 text-slate-300">
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Portfolio Container -->
+    <div class="container mx-auto px-4 py-24">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-8">
+        <div>
+          <h1 class="text-3xl font-bold mb-2">My Portfolio</h1>
+          <p class="text-gray-400">Track and manage your investments</p>
+        </div>
+        <div class="flex gap-3">
+          <button
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            onclick="openAddPositionModal()"
+          >
+            <i class="fas fa-plus"></i> Add Position
+          </button>
+          <button
+            class="px-4 py-2 border border-gray-600 rounded-lg hover:bg-gray-800"
+          >
+            <i class="fas fa-download"></i> Export
+          </button>
+        </div>
+      </div>
+
+      <!-- Portfolio Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="portfolio-summary-card">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-gray-500 text-sm">Total Value</p>
+              <p class="text-3xl font-bold mt-1">$245,890</p>
+              <p class="text-green-600 text-sm mt-2">
+                <i class="fas fa-arrow-up"></i> +$12,345 (5.3%)
+              </p>
+            </div>
+            <div class="icon-circle bg-blue-100 text-blue-600">
+              <i class="fas fa-wallet"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-summary-card">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-gray-500 text-sm">Day's Gain</p>
+              <p class="text-3xl font-bold mt-1">$3,450</p>
+              <p class="text-green-600 text-sm mt-2">
+                <i class="fas fa-arrow-up"></i> +1.42%
+              </p>
+            </div>
+            <div class="icon-circle bg-green-100 text-green-600">
+              <i class="fas fa-trending-up"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-summary-card">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-gray-500 text-sm">Total Gain</p>
+              <p class="text-3xl font-bold mt-1">$45,890</p>
+              <p class="text-green-600 text-sm mt-2">
+                <i class="fas fa-arrow-up"></i> +23.0%
+              </p>
+            </div>
+            <div class="icon-circle bg-purple-100 text-purple-600">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-summary-card">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-gray-500 text-sm">Cash Balance</p>
+              <p class="text-3xl font-bold mt-1">$12,500</p>
+              <p class="text-gray-600 text-sm mt-2">Available to invest</p>
+            </div>
+            <div class="icon-circle bg-orange-100 text-orange-600">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="bg-gray-800 rounded-lg shadow-lg">
+        <div class="border-b border-gray-700">
+          <nav class="flex">
+            <button class="portfolio-tab active" data-tab="holdings">
+              Holdings
+            </button>
+            <button class="portfolio-tab" data-tab="performance">
+              Performance
+            </button>
+            <button class="portfolio-tab" data-tab="transactions">
+              Transactions
+            </button>
+            <button class="portfolio-tab" data-tab="analysis">Analysis</button>
+          </nav>
+        </div>
+
+        <!-- Holdings Tab -->
+        <div class="tab-content" id="holdings-tab">
+          <div class="p-6">
+            <!-- Filter and Search -->
+            <div class="flex justify-between items-center mb-6">
+              <div class="flex gap-2">
+                <button class="filter-chip active">All</button>
+                <button class="filter-chip">Stocks</button>
+                <button class="filter-chip">ETFs</button>
+                <button class="filter-chip">Crypto</button>
+              </div>
+              <div class="relative">
+                <input
+                  type="text"
+                  placeholder="Search holdings..."
+                  class="px-4 py-2 pl-10 rounded-lg border border-gray-600 bg-gray-700"
+                />
+                <i
+                  class="fas fa-search absolute left-3 top-3 text-gray-400"
+                ></i>
+              </div>
+            </div>
+
+            <!-- Holdings Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-700 text-left">
+                    <th class="pb-3 font-semibold">Symbol</th>
+                    <th class="pb-3 font-semibold">Name</th>
+                    <th class="pb-3 font-semibold text-right">Shares</th>
+                    <th class="pb-3 font-semibold text-right">Avg Cost</th>
+                    <th class="pb-3 font-semibold text-right">Current Price</th>
+                    <th class="pb-3 font-semibold text-right">Market Value</th>
+                    <th class="pb-3 font-semibold text-right">Gain/Loss</th>
+                    <th class="pb-3 font-semibold text-right">% Change</th>
+                    <th class="pb-3 font-semibold text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-700 hover:bg-gray-700">
+                    <td class="py-4 font-semibold">AAPL</td>
+                    <td class="py-4">Apple Inc.</td>
+                    <td class="py-4 text-right">100</td>
+                    <td class="py-4 text-right">$150.00</td>
+                    <td class="py-4 text-right">$189.84</td>
+                    <td class="py-4 text-right font-semibold">$18,984</td>
+                    <td class="py-4 text-right text-green-600">+$3,984</td>
+                    <td class="py-4 text-right text-green-600">+26.56%</td>
+                    <td class="py-4 text-center">
+                      <button
+                        class="text-blue-600 hover:text-blue-800 mr-2"
+                        title="View Details"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        class="text-green-600 hover:text-green-800 mr-2"
+                        title="Buy More"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <button
+                        class="text-red-600 hover:text-red-800"
+                        title="Sell"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-700 hover:bg-gray-700">
+                    <td class="py-4 font-semibold">NVDA</td>
+                    <td class="py-4">NVIDIA Corporation</td>
+                    <td class="py-4 text-right">50</td>
+                    <td class="py-4 text-right">$450.00</td>
+                    <td class="py-4 text-right">$878.35</td>
+                    <td class="py-4 text-right font-semibold">$43,917</td>
+                    <td class="py-4 text-right text-green-600">+$21,417</td>
+                    <td class="py-4 text-right text-green-600">+95.19%</td>
+                    <td class="py-4 text-center">
+                      <button
+                        class="text-blue-600 hover:text-blue-800 mr-2"
+                        title="View Details"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        class="text-green-600 hover:text-green-800 mr-2"
+                        title="Buy More"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <button
+                        class="text-red-600 hover:text-red-800"
+                        title="Sell"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-700 hover:bg-gray-700">
+                    <td class="py-4 font-semibold">TSLA</td>
+                    <td class="py-4">Tesla, Inc.</td>
+                    <td class="py-4 text-right">75</td>
+                    <td class="py-4 text-right">$250.00</td>
+                    <td class="py-4 text-right">$238.45</td>
+                    <td class="py-4 text-right font-semibold">$17,883</td>
+                    <td class="py-4 text-right text-red-600">-$866</td>
+                    <td class="py-4 text-right text-red-600">-4.62%</td>
+                    <td class="py-4 text-center">
+                      <button
+                        class="text-blue-600 hover:text-blue-800 mr-2"
+                        title="View Details"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        class="text-green-600 hover:text-green-800 mr-2"
+                        title="Buy More"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                      <button
+                        class="text-red-600 hover:text-red-800"
+                        title="Sell"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Tab -->
+        <div class="tab-content hidden" id="performance-tab">
+          <div class="p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Performance Chart -->
+              <div>
+                <h3 class="font-bold text-lg mb-4">Portfolio Performance</h3>
+                <canvas id="performanceChart" height="300"></canvas>
+              </div>
+
+              <!-- Allocation Chart -->
+              <div>
+                <h3 class="font-bold text-lg mb-4">Asset Allocation</h3>
+                <canvas id="allocationChart" height="300"></canvas>
+              </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              <div class="metric-card">
+                <p class="text-gray-500 text-sm">Total Return</p>
+                <p class="text-2xl font-bold text-green-600">+23.45%</p>
+              </div>
+              <div class="metric-card">
+                <p class="text-gray-500 text-sm">Annual Return</p>
+                <p class="text-2xl font-bold text-green-600">+18.2%</p>
+              </div>
+              <div class="metric-card">
+                <p class="text-gray-500 text-sm">Best Performer</p>
+                <p class="text-2xl font-bold">NVDA</p>
+              </div>
+              <div class="metric-card">
+                <p class="text-gray-500 text-sm">Worst Performer</p>
+                <p class="text-2xl font-bold">TSLA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transactions Tab -->
+        <div class="tab-content hidden" id="transactions-tab">
+          <div class="p-6">
+            <!-- Transaction History -->
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-700 text-left">
+                    <th class="pb-3 font-semibold">Date</th>
+                    <th class="pb-3 font-semibold">Type</th>
+                    <th class="pb-3 font-semibold">Symbol</th>
+                    <th class="pb-3 font-semibold text-right">Quantity</th>
+                    <th class="pb-3 font-semibold text-right">Price</th>
+                    <th class="pb-3 font-semibold text-right">Total</th>
+                    <th class="pb-3 font-semibold">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-700 hover:bg-gray-700">
+                    <td class="py-3">2024-01-15</td>
+                    <td class="py-3">
+                      <span
+                        class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold"
+                        >BUY</span
+                      >
+                    </td>
+                    <td class="py-3 font-semibold">AAPL</td>
+                    <td class="py-3 text-right">50</td>
+                    <td class="py-3 text-right">$180.50</td>
+                    <td class="py-3 text-right font-semibold">$9,025</td>
+                    <td class="py-3">
+                      <span
+                        class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs"
+                        >Completed</span
+                      >
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-700 hover:bg-gray-700">
+                    <td class="py-3">2024-01-10</td>
+                    <td class="py-3">
+                      <span
+                        class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-semibold"
+                        >SELL</span
+                      >
+                    </td>
+                    <td class="py-3 font-semibold">TSLA</td>
+                    <td class="py-3 text-right">25</td>
+                    <td class="py-3 text-right">$245.00</td>
+                    <td class="py-3 text-right font-semibold">$6,125</td>
+                    <td class="py-3">
+                      <span
+                        class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs"
+                        >Completed</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analysis Tab -->
+        <div class="tab-content hidden" id="analysis-tab">
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Risk Analysis -->
+              <div class="analysis-card">
+                <h3 class="font-bold text-lg mb-4">Risk Analysis</h3>
+                <div class="space-y-3">
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span>Portfolio Beta</span>
+                      <span class="font-semibold">1.23</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        class="bg-blue-600 h-2 rounded-full"
+                        style="width: 62%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span>Volatility</span>
+                      <span class="font-semibold">18.5%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        class="bg-orange-600 h-2 rounded-full"
+                        style="width: 45%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between mb-1">
+                      <span>Sharpe Ratio</span>
+                      <span class="font-semibold">1.85</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        class="bg-green-600 h-2 rounded-full"
+                        style="width: 75%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recommendations -->
+              <div class="analysis-card">
+                <h3 class="font-bold text-lg mb-4">AI Recommendations</h3>
+                <div class="space-y-3">
+                  <div class="recommendation-item">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-arrow-up"></i>
+                      </div>
+                      <div>
+                        <p class="font-semibold">Rebalance Portfolio</p>
+                        <p class="text-sm text-gray-500">
+                          Consider reducing tech exposure
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="recommendation-item">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center"
+                      >
+                        <i class="fas fa-shield-alt"></i>
+                      </div>
+                      <div>
+                        <p class="font-semibold">Add Defensive Stocks</p>
+                        <p class="text-sm text-gray-500">
+                          Increase allocation to utilities
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Position Modal -->
+    <div id="addPositionModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="text-xl font-bold">Add New Position</h3>
+          <button
+            onclick="closeAddPositionModal()"
+            class="text-gray-400 hover:text-gray-600"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="addPositionForm">
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-2">Symbol</label>
+              <input
+                type="text"
+                name="symbol"
+                required
+                class="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-700"
+              />
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-sm font-semibold mb-2">Quantity</label>
+                <input
+                  type="number"
+                  name="quantity"
+                  required
+                  class="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-700"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-2">Price</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  name="price"
+                  required
+                  class="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-700"
+                />
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-2">Date</label>
+              <input
+                type="date"
+                name="date"
+                required
+                class="w-full px-3 py-2 rounded-lg border border-gray-600 bg-gray-700"
+              />
+            </div>
+            <div class="flex justify-end gap-3">
+              <button
+                type="button"
+                onclick="closeAddPositionModal()"
+                class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-800"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Add Position
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/portfolio.js"></script>
+    <!-- <script type="module" src="/js/components.js"></script> -->
+  </body>
+</html>

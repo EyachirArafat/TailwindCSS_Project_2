@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - TickerAI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/tailwind.css" />
+    <link rel="stylesheet" href="../css/custom.css" />
+  </head>
+  <body class="bg-gray-900 text-slate-100">
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="container mx-auto px-4 py-8 mt-16">
+      <h1 class="text-3xl font-bold mb-8">Settings</h1>
+
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Settings Navigation -->
+        <aside class="col-span-12 md:col-span-3">
+          <nav class="bg-gray-800 rounded-lg shadow-lg p-4">
+            <button class="settings-nav-item active" data-section="profile">
+              <i class="fas fa-user"></i> Profile
+            </button>
+            <button class="settings-nav-item" data-section="preferences">
+              <i class="fas fa-sliders-h"></i> Preferences
+            </button>
+            <button class="settings-nav-item" data-section="notifications">
+              <i class="fas fa-bell"></i> Notifications
+            </button>
+            <button class="settings-nav-item" data-section="security">
+              <i class="fas fa-lock"></i> Security
+            </button>
+            <button class="settings-nav-item" data-section="billing">
+              <i class="fas fa-credit-card"></i> Billing
+            </button>
+            <button class="settings-nav-item" data-section="api">
+              <i class="fas fa-code"></i> API Keys
+            </button>
+            <button class="settings-nav-item" data-section="data">
+              <i class="fas fa-database"></i> Data & Privacy
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Settings Content -->
+        <main class="col-span-12 md:col-span-9">
+          <!-- Profile Section -->
+          <section id="profile" class="settings-section">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Profile Settings</h2>
+
+              <div class="flex items-center gap-6 mb-6">
+                <div class="relative">
+                  <img
+                    src="../assets/images/user-avatar.png"
+                    alt="Profile"
+                    class="w-24 h-24 rounded-full border-4 border-gray-700"
+                  />
+                  <button
+                    class="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700"
+                  >
+                    <i class="fas fa-camera text-xs"></i>
+                  </button>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">John Doe</h3>
+                  <p class="text-gray-500">john.doe@example.com</p>
+                  <p class="text-sm text-green-600 mt-1">
+                    <i class="fas fa-crown"></i> Premium Member
+                  </p>
+                </div>
+              </div>
+
+              <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-semibold mb-2"
+                      >First Name</label
+                    >
+                    <input type="text" value="John" class="settings-input" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold mb-2"
+                      >Last Name</label
+                    >
+                    <input type="text" value="Doe" class="settings-input" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Email</label>
+                  <input
+                    type="email"
+                    value="john.doe@example.com"
+                    class="settings-input"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    value="+1 (555) 123-4567"
+                    class="settings-input"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2">Bio</label>
+                  <textarea rows="3" class="settings-input">
+Experienced investor focusing on tech stocks and cryptocurrency.</textarea
+                  >
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold mb-2"
+                    >Location</label
+                  >
+                  <input
+                    type="text"
+                    value="New York, USA"
+                    class="settings-input"
+                  />
+                </div>
+
+                <button type="submit" class="btn-primary">
+                  <i class="fas fa-save"></i> Save Changes
+                </button>
+              </form>
+            </div>
+          </section>
+
+          <!-- Preferences Section -->
+          <section id="preferences" class="settings-section hidden">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Preferences</h2>
+
+              <div class="space-y-6">
+                <div>
+                  <h3 class="font-semibold mb-3">Display Settings</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <span>Dark Mode</span>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <span>Compact View</span>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <span>Show Percentage Changes</span>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <span>Show Volume Bars</span>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Market Preferences</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <label class="block text-sm mb-2">Default Market</label>
+                      <select class="settings-input">
+                        <option>US Markets</option>
+                        <option>European Markets</option>
+                        <option>Asian Markets</option>
+                        <option>Cryptocurrency</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-2">Currency</label>
+                      <select class="settings-input">
+                        <option>USD ($)</option>
+                        <option>EUR (€)</option>
+                        <option>GBP (£)</option>
+                        <option>JPY (¥)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-2">Time Zone</label>
+                      <select class="settings-input">
+                        <option>Eastern Time (ET)</option>
+                        <option>Pacific Time (PT)</option>
+                        <option>Central European Time (CET)</option>
+                        <option>Japan Standard Time (JST)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Data Refresh</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <label class="block text-sm mb-2"
+                        >Auto-refresh Interval</label
+                      >
+                      <select class="settings-input">
+                        <option>Real-time</option>
+                        <option>Every 5 seconds</option>
+                        <option>Every 15 seconds</option>
+                        <option>Every 30 seconds</option>
+                        <option>Manual only</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="btn-primary">
+                  <i class="fas fa-save"></i> Save Preferences
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Notifications Section -->
+          <section id="notifications" class="settings-section hidden">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Notification Settings</h2>
+
+              <div class="space-y-6">
+                <div>
+                  <h3 class="font-semibold mb-3">Email Notifications</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Daily Market Summary</p>
+                        <p class="text-sm text-gray-500">
+                          Get daily market recap at market close
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Price Alerts</p>
+                        <p class="text-sm text-gray-500">
+                          Notify when stocks hit target prices
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>News Alerts</p>
+                        <p class="text-sm text-gray-500">
+                          Breaking news for your watchlist
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Portfolio Updates</p>
+                        <p class="text-sm text-gray-500">
+                          Significant changes in your holdings
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Push Notifications</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Browser Notifications</p>
+                        <p class="text-sm text-gray-500">
+                          Real-time alerts in your browser
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Mobile Notifications</p>
+                        <p class="text-sm text-gray-500">
+                          Get alerts on your mobile device
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-semibold mb-3">Alert Frequency</h3>
+                  <select class="settings-input">
+                    <option>All Alerts</option>
+                    <option>Important Only</option>
+                    <option>Daily Digest</option>
+                    <option>Weekly Summary</option>
+                  </select>
+                </div>
+
+                <button class="btn-primary">
+                  <i class="fas fa-save"></i> Save Notification Settings
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Security Section -->
+          <section id="security" class="settings-section hidden">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Security Settings</h2>
+
+              <div class="space-y-6">
+                <!-- Change Password -->
+                <div>
+                  <h3 class="font-semibold mb-3">Change Password</h3>
+                  <form class="space-y-3">
+                    <div>
+                      <label class="block text-sm mb-2">Current Password</label>
+                      <input
+                        type="password"
+                        class="settings-input"
+                        placeholder="Enter current password"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-2">New Password</label>
+                      <input
+                        type="password"
+                        class="settings-input"
+                        placeholder="Enter new password"
+                      />
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-2"
+                        >Confirm New Password</label
+                      >
+                      <input
+                        type="password"
+                        class="settings-input"
+                        placeholder="Confirm new password"
+                      />
+                    </div>
+                    <button type="submit" class="btn-primary">
+                      <i class="fas fa-key"></i> Update Password
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Two-Factor Authentication -->
+                <div>
+                  <h3 class="font-semibold mb-3">Two-Factor Authentication</h3>
+                  <div class="p-4 bg-green-900 rounded-lg mb-3">
+                    <p class="text-green-200">
+                      <i class="fas fa-check-circle"></i> 2FA is currently
+                      enabled
+                    </p>
+                  </div>
+                  <button class="btn-secondary">
+                    <i class="fas fa-mobile-alt"></i> Manage 2FA Settings
+                  </button>
+                </div>
+
+                <!-- Login Sessions -->
+                <div>
+                  <h3 class="font-semibold mb-3">Active Sessions</h3>
+                  <div class="space-y-3">
+                    <div
+                      class="flex items-center justify-between p-3 bg-gray-700 rounded"
+                    >
+                      <div>
+                        <p class="font-medium">Chrome on Windows</p>
+                        <p class="text-sm text-gray-500">
+                          New York, USA • Current session
+                        </p>
+                      </div>
+                      <span class="text-green-600">Active</span>
+                    </div>
+                    <div
+                      class="flex items-center justify-between p-3 bg-gray-700 rounded"
+                    >
+                      <div>
+                        <p class="font-medium">Safari on iPhone</p>
+                        <p class="text-sm text-gray-500">
+                          New York, USA • 2 hours ago
+                        </p>
+                      </div>
+                      <button class="text-red-600 hover:text-red-700">
+                        <i class="fas fa-times"></i> End
+                      </button>
+                    </div>
+                  </div>
+                  <button class="mt-3 text-red-600 hover:text-red-700">
+                    <i class="fas fa-sign-out-alt"></i> Sign out all other
+                    sessions
+                  </button>
+                </div>
+
+                <!-- Security Log -->
+                <div>
+                  <h3 class="font-semibold mb-3">Recent Activity</h3>
+                  <div class="space-y-2 text-sm">
+                    <div
+                      class="flex justify-between py-2 border-b border-gray-700"
+                    >
+                      <span>Password changed</span>
+                      <span class="text-gray-500">2 days ago</span>
+                    </div>
+                    <div
+                      class="flex justify-between py-2 border-b border-gray-700"
+                    >
+                      <span>New login from Chrome</span>
+                      <span class="text-gray-500">5 days ago</span>
+                    </div>
+                    <div
+                      class="flex justify-between py-2 border-b border-gray-700"
+                    >
+                      <span>2FA enabled</span>
+                      <span class="text-gray-500">1 week ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Billing Section -->
+          <section id="billing" class="settings-section hidden">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Billing & Subscription</h2>
+
+              <div class="space-y-6">
+                <!-- Current Plan -->
+                <div>
+                  <h3 class="font-semibold mb-3">Current Plan</h3>
+                  <div
+                    class="p-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg"
+                  >
+                    <div class="flex justify-between items-center">
+                      <div>
+                        <h4 class="text-xl font-bold">Premium Plan</h4>
+                        <p class="text-blue-100">$29.99/month</p>
+                      </div>
+                      <i class="fas fa-crown text-3xl text-yellow-400"></i>
+                    </div>
+                    <p class="mt-2 text-sm">
+                      Next billing date: November 14, 2024
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div>
+                  <h3 class="font-semibold mb-3">Payment Method</h3>
+                  <div
+                    class="flex items-center justify-between p-4 border rounded-lg border-gray-700"
+                  >
+                    <div class="flex items-center gap-3">
+                      <i class="fab fa-cc-visa text-2xl text-blue-600"></i>
+                      <div>
+                        <p class="font-medium">Visa ending in 4242</p>
+                        <p class="text-sm text-gray-500">Expires 12/2025</p>
+                      </div>
+                    </div>
+                    <button class="text-blue-600 hover:text-blue-700">
+                      <i class="fas fa-edit"></i> Update
+                    </button>
+                  </div>
+                  <button class="mt-3 text-blue-600 hover:text-blue-700">
+                    <i class="fas fa-plus"></i> Add payment method
+                  </button>
+                </div>
+
+                <!-- Billing History -->
+                <div>
+                  <h3 class="font-semibold mb-3">Billing History</h3>
+                  <div class="overflow-x-auto">
+                    <table class="w-full">
+                      <thead>
+                        <tr class="border-b border-gray-700">
+                          <th class="text-left py-2">Date</th>
+                          <th class="text-left py-2">Description</th>
+                          <th class="text-right py-2">Amount</th>
+                          <th class="text-right py-2">Invoice</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="border-b border-gray-700">
+                          <td class="py-2">Oct 14, 2024</td>
+                          <td class="py-2">Premium Plan</td>
+                          <td class="py-2 text-right">$29.99</td>
+                          <td class="py-2 text-right">
+                            <button class="text-blue-600 hover:text-blue-700">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                          <td class="py-2">Sep 14, 2024</td>
+                          <td class="py-2">Premium Plan</td>
+                          <td class="py-2 text-right">$29.99</td>
+                          <td class="py-2 text-right">
+                            <button class="text-blue-600 hover:text-blue-700">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Plan Options -->
+                <div>
+                  <h3 class="font-semibold mb-3">Change Plan</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border rounded-lg p-4 border-gray-700">
+                      <h4 class="font-bold">Basic</h4>
+                      <p class="text-2xl font-bold mt-2">
+                        $9.99<span class="text-sm text-gray-500">/mo</span>
+                      </p>
+                      <ul class="mt-3 space-y-1 text-sm">
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Real-time
+                          data
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> 5
+                          watchlists
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Basic
+                          charts
+                        </li>
+                      </ul>
+                      <button class="mt-4 w-full btn-secondary text-sm">
+                        Downgrade
+                      </button>
+                    </div>
+                    <div
+                      class="border-2 border-blue-600 rounded-lg p-4 relative"
+                    >
+                      <span
+                        class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                        >Current</span
+                      >
+                      <h4 class="font-bold">Premium</h4>
+                      <p class="text-2xl font-bold mt-2">
+                        $29.99<span class="text-sm text-gray-500">/mo</span>
+                      </p>
+                      <ul class="mt-3 space-y-1 text-sm">
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Everything
+                          in Basic
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Unlimited
+                          watchlists
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Advanced
+                          charts
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> AI
+                          insights
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="border rounded-lg p-4 border-gray-700">
+                      <h4 class="font-bold">Pro</h4>
+                      <p class="text-2xl font-bold mt-2">
+                        $99.99<span class="text-sm text-gray-500">/mo</span>
+                      </p>
+                      <ul class="mt-3 space-y-1 text-sm">
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Everything
+                          in Premium
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> API access
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Priority
+                          support
+                        </li>
+                        <li>
+                          <i class="fas fa-check text-green-600"></i> Custom
+                          alerts
+                        </li>
+                      </ul>
+                      <button class="mt-4 w-full btn-primary text-sm">
+                        Upgrade
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="text-red-600 hover:text-red-700">
+                  <i class="fas fa-times-circle"></i> Cancel subscription
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- API Keys Section -->
+          <section id="api" class="settings-section hidden">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">API Keys</h2>
+
+              <div class="space-y-6">
+                <div class="p-4 bg-yellow-900 rounded-lg">
+                  <p class="text-yellow-200">
+                    <i class="fas fa-exclamation-triangle"></i> Keep your API
+                    keys secure. Never share them publicly.
+                  </p>
+                </div>
+
+                <!-- API Keys List -->
+                <div>
+                  <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-semibold">Your API Keys</h3>
+                    <button class="btn-primary text-sm">
+                      <i class="fas fa-plus"></i> Generate New Key
+                    </button>
+                  </div>
+
+                  <div class="space-y-3">
+                    <div class="border rounded-lg p-4 border-gray-700">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <p class="font-medium">Production API Key</p>
+                          <p class="text-sm text-gray-500">
+                            Created on Oct 1, 2024
+                          </p>
+                          <div class="mt-2 flex items-center gap-2">
+                            <code class="bg-gray-700 px-2 py-1 rounded text-sm">
+                              sk_live_****************************7c4d
+                            </code>
+                            <button class="text-blue-600 hover:text-blue-700">
+                              <i class="fas fa-copy"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <button class="text-red-600 hover:text-red-700">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="border rounded-lg p-4 border-gray-700">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <p class="font-medium">Test API Key</p>
+                          <p class="text-sm text-gray-500">
+                            Created on Sep 15, 2024
+                          </p>
+                          <div class="mt-2 flex items-center gap-2">
+                            <code class="bg-gray-700 px-2 py-1 rounded text-sm">
+                              sk_test_****************************9a2f
+                            </code>
+                            <button class="text-blue-600 hover:text-blue-700">
+                              <i class="fas fa-copy"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <button class="text-red-600 hover:text-red-700">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- API Usage -->
+                <div>
+                  <h3 class="font-semibold mb-3">API Usage (Last 30 days)</h3>
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                      <span>Total Requests</span>
+                      <span class="font-medium">24,567</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span>Success Rate</span>
+                      <span class="font-medium text-green-600">99.8%</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span>Average Response Time</span>
+                      <span class="font-medium">120ms</span>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <div class="bg-gray-700 rounded-full h-2">
+                      <div
+                        class="bg-blue-600 h-2 rounded-full"
+                        style="width: 45%"
+                      ></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">
+                      45% of monthly limit (50,000 requests)
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Documentation Link -->
+                <div>
+                  <a href="/docs/api" class="text-blue-600 hover:text-blue-700">
+                    <i class="fas fa-book"></i> View API Documentation →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Data & Privacy Section -->
+          <section id="data" class="settings-section hidden">
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+              <h2 class="text-xl font-bold mb-6">Data & Privacy</h2>
+
+              <div class="space-y-6">
+                <!-- Privacy Settings -->
+                <div>
+                  <h3 class="font-semibold mb-3">Privacy Settings</h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Profile Visibility</p>
+                        <p class="text-sm text-gray-500">
+                          Make your profile visible to other users
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Share Trading Activity</p>
+                        <p class="text-sm text-gray-500">
+                          Allow others to see your trades
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" />
+                    </label>
+                    <label class="flex items-center justify-between">
+                      <div>
+                        <p>Analytics & Improvements</p>
+                        <p class="text-sm text-gray-500">
+                          Help us improve by sharing usage data
+                        </p>
+                      </div>
+                      <input type="checkbox" class="toggle-switch" checked />
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Data Export -->
+                <div>
+                  <h3 class="font-semibold mb-3">Export Your Data</h3>
+                  <p class="text-sm text-gray-500 mb-3">
+                    Download a copy of your TickerAI data
+                  </p>
+                  <div class="flex gap-3">
+                    <button class="btn-secondary">
+                      <i class="fas fa-download"></i> Export as CSV
+                    </button>
+                    <button class="btn-secondary">
+                      <i class="fas fa-download"></i> Export as JSON
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Connected Apps -->
+                <div>
+                  <h3 class="font-semibold mb-3">Connected Apps</h3>
+                  <div class="space-y-3">
+                    <div
+                      class="flex items-center justify-between p-3 border rounded-lg border-gray-700"
+                    >
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="https://www.google.com/favicon.ico"
+                          alt="Google"
+                          class="w-8 h-8"
+                        />
+                        <div>
+                          <p class="font-medium">Google Calendar</p>
+                          <p class="text-sm text-gray-500">
+                            Sync earnings events
+                          </p>
+                        </div>
+                      </div>
+                      <button class="text-red-600 hover:text-red-700">
+                        Disconnect
+                      </button>
+                    </div>
+                    <div
+                      class="flex items-center justify-between p-3 border rounded-lg border-gray-700"
+                    >
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="../assets/images/slack-icon.png"
+                          alt="Slack"
+                          class="w-8 h-8"
+                        />
+                        <div>
+                          <p class="font-medium">Slack</p>
+                          <p class="text-sm text-gray-500">
+                            Receive alerts in Slack
+                          </p>
+                        </div>
+                      </div>
+                      <button class="text-red-600 hover:text-red-700">
+                        Disconnect
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Delete Account -->
+                <div class="border-t pt-6 border-gray-700">
+                  <h3 class="font-semibold text-red-600 mb-3">Danger Zone</h3>
+                  <p class="text-sm text-gray-500 mb-3">
+                    Once you delete your account, there is no going back.
+                  </p>
+                  <button class="btn-danger">
+                    <i class="fas fa-exclamation-triangle"></i> Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script type="module" src="/js/settings.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+export default class ComponentLoader {
+  constructor() {}
+
+  async loadAll() {
+    await this.loadNavbar();
+    await this.loadFooter();
+  }
+
+  async loadNavbar() {
+    const placeholder = document.getElementById("navbar-placeholder");
+    if (!placeholder) return;
+
+    const navbar = `
+    <nav
+      class="navbar fixed top-0 w-full z-[100] bg-gray-900 shadow-md transition-all duration-300"
+      id="navbar"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between py-4">
+          <!-- Logo Section -->
+          <div class="flex items-center gap-4">
+            <a href="/" class="flex items-center gap-2">
+              <img
+                class="h-10 md:h-12"
+                src="/assets/images/tickerAI-logo.png"
+                alt="TickerAI"
+              />
+              <div class="hidden sm:block">
+                <p class="text-sm font-semibold text-nowrap text-slate-200">
+                  A Mark Cuban Company
+                </p>
+                <p class="text-xs text-gray-400 text-nowrap">
+                  AI Financial Intelligence
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-6">
+            <a href="/pages/dashboard.html" class="nav-link">Dashboard</a>
+            <div class="relative group">
+              <button class="nav-link flex items-center gap-1">
+                Markets <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <div class="dropdown-menu">
+                <a href="/#markets" class="dropdown-item">Stocks</a>
+                <a href="/#crypto" class="dropdown-item">Cryptocurrency</a>
+                <a href="/#forex" class="dropdown-item">Forex</a>
+                <a href="/#commodities" class="dropdown-item">Commodities</a>
+              </div>
+            </div>
+            <a href="/pages/news.html" class="nav-link">News</a>
+            <a href="/pages/analysis.html" class="nav-link">Analysis</a>
+            <a href="/pages/portfolio.html" class="nav-link">Portfolio</a>
+            <a href="/pages/about.html" class="nav-link">About</a>
+            <a href="/pages/contact.html" class="nav-link">Contact</a>
+          </div>
+
+          <!-- Right Section -->
+          <div class="flex items-center gap-3">
+          <button class="btn-ai" id="aiChatBtn">
+              <i class="fas fa-robot"></i>
+              <span class="hidden md:inline">AI</span>
+            </button>
+            
+            <button class="icon-btn relative" id="notificationsBtn">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge">3</span>
+            </button>
+            
+            <div class="relative">
+              <button class="user-menu-btn" id="userMenuBtn">
+                <img
+                  src="/assets/images/user-avatar.png"
+                  alt="User"
+                  class="w-8 h-8 rounded-full"
+                />
+                <i class="fas fa-chevron-down text-xs"></i>
+              </button>
+              <div class="user-dropdown hidden" id="userMenu">
+                <a href="/pages/dashboard.html" class="dropdown-item">
+                  <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a href="/pages/portfolio.html" class="dropdown-item">
+                  <i class="fas fa-briefcase"></i> Portfolio
+                </a>
+                <a href="/pages/settings.html" class="dropdown-item">
+                  <i class="fas fa-cog"></i> Settings
+                </a>
+                <hr class="my-2 border-gray-700" />
+                <a href="/pages/login.html" class="dropdown-item text-red-600">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </div>
+            <button class="lg:hidden icon-btn cursor-pointer" id="mobileMenuBtn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="mobile-menu hidden" id="mobileMenu">
+        <div class="container mx-auto px-4 py-4 space-y-3 flex flex-col">
+          <a href="/" class="mobile-menu-item">Home</a>
+          <a href="/#markets" class="mobile-menu-item">Markets</a>
+          <a href="/pages/news.html" class="mobile-menu-item">News</a>
+          <a href="/pages/analysis.html" class="mobile-menu-item">Analysis</a>
+          <a href="/pages/portfolio.html" class="mobile-menu-item">Portfolio</a>
+          <a href="/pages/about.html" class="mobile-menu-item">About</a>
+          <a href="/pages/contact.html" class="mobile-menu-item">Contact</a>
+        </div>
+      </div>
+    </nav>`;
+    placeholder.innerHTML = navbar;
+  }
+
+  async loadFooter() {
+    const placeholder = document.getElementById("footer-placeholder");
+    if (!placeholder) return;
+
+    const footer = `
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <img src="/assets/images/tickerAI-logo.png" alt="TickerAI" class="h-10 mb-4" />
+              <p class="text-gray-400 mb-4">
+                AI-powered financial intelligence platform providing real-time market insights.
+              </p>
+              <div class="flex gap-3">
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-bold mb-4">Quick Links</h4>
+              <ul class="space-y-2">
+                <li><a href="/pages/about.html" class="footer-link">About Us</a></li>
+                <li><a href="/#features" class="footer-link">Features</a></li>
+                <li><a href="/pages/pricing.html" class="footer-link">Pricing</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold mb-4">Resources</h4>
+              <ul class="space-y-2">
+                <li><a href="#" class="footer-link">API Docs</a></li>
+                <li><a href="/pages/contact.html" class="footer-link">Contact</a></li>
+                <li><a href="#" class="footer-link">Help Center</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold mb-4">Legal</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-8 text-center">
+            <p class="text-gray-400">
+              © ${new Date().getFullYear()} TickerAI. All rights reserved. | A Mark Cuban Company.
+            </p>
+          </div>
+        </div>
+      </footer>`;
+    placeholder.innerHTML = footer;
+  }
+}
