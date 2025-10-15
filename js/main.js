@@ -258,6 +258,7 @@ class NavigationManager {
 
     // Close dropdowns when clicking outside
     document.addEventListener("click", (e) => {
+      console.log("clicked user menu btn");
       if (!e.target.closest(".user-menu-btn")) {
         document.getElementById("userDropdown")?.classList.add("hidden");
       }
@@ -665,3 +666,7 @@ const utils = {
 
 // Export utilities
 window.utils = utils;
+
+function allRightsReservedYear() {
+  return new Date().getFullYear();
+}

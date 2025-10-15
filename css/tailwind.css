@@ -582,6 +582,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
 .btn-ai:hover {
@@ -647,27 +648,30 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.feature-icon{
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  width: min-content;
-  padding: 1rem;
+/* Feature Icon */
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem;
 }
 
-.feature-link{
-  color: rgb(255, 255, 255); /* white */
-  transition: all 0.3s;
+/* Feature Link */
+.feature-link {
+  color: rgb(37 99 235); 
   font-weight: 500;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  text-decoration: none;
   margin-top: 0.5rem;
-  font-size: 0.875rem;
+  transition: gap 0.2s;
+  &:hover {
+    gap: 0.75rem;
+  }
 }
 
 .filter-btn{
@@ -753,7 +757,6 @@
 
 .market-ticker {
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 0.5rem 2rem;
   animation: scroll 20s linear infinite;
@@ -833,3 +836,411 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   border-radius: 0.25rem;
 }
+
+
+/* ==================================== */
+
+
+/* User Dropdown & Menu */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 12rem;
+background-color: rgb(31 41 55); 
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  /* display: none; */
+  z-index: 50;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.user-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+/* .mobile-menu {
+  position: absolute;
+  top: 5rem;
+  right: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+   background-color: rgb(75 85 99); 
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+} */
+
+
+.mobile-menu-item {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.mobile-menu-item:hover {
+  background-color: rgb(37 99 235); 
+  color: white;
+}
+
+/* Social Icons */
+.social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(75 85 99); /* gray-600 */
+  color: white;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.social-icon:hover {
+  background-color: rgb(37 99 235); /* blue-600 */
+  transform: scale(1.1);
+}
+
+.social-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(229 231 235); /* gray-200 */
+  color: rgb(75 85 99); /* gray-600 */
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.social-link:hover {
+  background-color: rgb(37 99 235); /* blue-600 */
+  color: white;
+}
+
+/* Footer Link */
+.footer-link {
+  color: rgb(156 163 175); /* gray-400 */
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: white;
+}
+
+/* Filter Chip */
+.filter-chip {
+  padding: 0.5rem 1rem;
+   background-color: rgb(55 65 81); /* gray-700 */
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  background-color: rgb(37 99 235); /* blue-600 */
+  color: white;
+}
+
+/* Portfolio Tabs */
+.portfolio-tab {
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.portfolio-tab:hover {
+  color: rgb(37 99 235); /* blue-600 */
+}
+
+.portfolio-tab.active {
+  color: rgb(37 99 235); /* blue-600 */
+  border-bottom-color: rgb(37 99 235);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content:not(.hidden) {
+  display: block;
+}
+
+/* Modal */
+/* .modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background-color: rgb(31 41 55); 
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 32rem;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgb(55 65 81); 
+}
+
+
+.modal-body {
+  padding: 1.5rem;
+} */
+
+/* Registration Steps */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.step-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgb(229 231 235); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.step.active .step-circle {
+  background-color: rgb(37 99 235);
+  color: white;
+}
+
+.step-label {
+  font-size: 0.875rem;
+  color: rgb(107 114 128); 
+}
+
+.step.active .step-label {
+  color: rgb(37 99 235);
+}
+
+/* .step-content {
+  display: none;
+} */
+
+/* Market Select Button */
+.market-select-btn {
+  padding: 0.75rem;
+  background-color: rgb(45, 50, 61); /* gray-100 */
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.market-select-btn:hover {
+  background-color: rgb(229 231 235); /* gray-200 */
+}
+
+.market-select-btn.selected {
+  background-color: rgb(219 234 254); /* blue-100 */
+  border-color: rgb(37 99 235); /* blue-600 */
+}
+
+
+
+/* Settings */
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  text-align: left;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.settings-nav-item:hover {
+  background-color: rgb(243 244 246); /* gray-100 */
+}
+
+.settings-nav-item.active {
+  background-color: rgb(219 234 254); /* blue-100 */
+  color: rgb(37 99 235); /* blue-600 */
+}
+
+/* .settings-section {
+  display: none;
+} */
+
+.toggle-switch {
+  width: 3rem;
+  height: 1.5rem;
+  appearance: none;
+  background-color: rgb(209 213 219); /* gray-300 */
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggle-switch:checked {
+  background-color: rgb(37 99 235); /* blue-600 */
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: white;
+  border-radius: 9999px;
+  top: 0.125rem;
+  left: 0.125rem;
+  transition: transform 0.2s;
+}
+
+.toggle-switch:checked::after {
+  transform: translateX(1.5rem);
+}
+
+/* Analysis Page */
+.stock-quick-link {
+  padding: 0.25rem 0.75rem;
+  background-color: rgb(243 244 246); /* gray-100 */
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.stock-quick-link:hover {
+  background-color: rgb(37 99 235); /* blue-600 */
+  color: white;
+}
+
+.chart-period-btn {
+  padding: 0.5rem 1rem;
+  background-color: rgb(243 244 246); /* gray-100 */
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chart-period-btn:hover,
+.chart-period-btn.active {
+  background-color: rgb(37 99 235); /* blue-600 */
+  color: white;
+}
+
+.analysis-tab {
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.analysis-tab:hover {
+  background-color: rgb(243 244 246); /* gray-100 */
+}
+
+.analysis-tab.active {
+  color: rgb(37 99 235); /* blue-600 */
+  border-bottom-color: rgb(37 99 235);
+}
+
+.analysis-tab-content {
+  display: none;
+}
+
+/* Cards for Analysis */
+.indicator-card,
+.fundamental-card,
+.metric-card,
+.analysis-card {
+   background-color: rgb(31 41 55); /* gray-800 */
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+
+.ai-insight-card {
+    background-color: rgb(30 58 138); /* blue-900 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.ai-metric {
+   background-color: rgb(55 65 81); /* gray-700 */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.factor-card {
+   background-color: rgb(31 41 55); /* gray-800 */
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+
+
+.recommendation-item {
+  padding: 1rem;
+  background-color: rgb(249 250 251); /* gray-50 */
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.recommendation-item:hover {
+  background-color: rgb(243 244 246); /* gray-100 */
+}
+
+/* Portfolio Summary Card */
+.portfolio-summary-card {  
+  background-color: rgb(31 41 55); /* gray-800 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Icon Circle */
+.icon-circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

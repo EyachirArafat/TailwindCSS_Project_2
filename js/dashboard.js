@@ -226,8 +226,8 @@ class Dashboard {
 }
 
 // Initialize dashboard
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.getElementById("portfolioChart")) {
-    new Dashboard();
-  }
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   if (document.getElementById("portfolioChart")) {
+//     new Dashboard();
+//   }
+// });
