@@ -55,7 +55,7 @@
 
           <!-- Desktop Navigation -->
           <div class="hidden lg:flex items-center gap-6">
-            <a href="/" class="nav-link">Home</a>
+            <a href="pages/dashboard.html" class="nav-link">Dashboard</a>
 
             <!-- Markets Dropdown -->
             <div class="relative group">
@@ -71,7 +71,8 @@
             </div>
 
             <a href="pages/news.html" class="nav-link">News</a>
-            <a href="#analysis" class="nav-link">Analysis</a>
+            <a href="pages/analysis.html" class="nav-link">Analysis</a>
+            <a href="pages/portfolio.html" class="nav-link">Portfolio</a>
             <a href="pages/about.html" class="nav-link">About</a>
             <a href="pages/contact.html" class="nav-link">Contact</a>
           </div>
@@ -149,7 +150,8 @@
           <a href="/" class="mobile-menu-item">Home</a>
           <a href="#markets" class="mobile-menu-item">Markets</a>
           <a href="pages/news.html" class="mobile-menu-item">News</a>
-          <a href="#analysis" class="mobile-menu-item">Analysis</a>
+          <a href="pages/analysis.html" class="mobile-menu-item">Analysis</a>
+          <a href="pages/portfolio.html" class="mobile-menu-item">Portfolio</a>
           <a href="pages/about.html" class="mobile-menu-item">About</a>
           <a href="pages/contact.html" class="mobile-menu-item">Contact</a>
         </div>
@@ -446,7 +448,7 @@
     <!-- Latest News Section -->
     <section class="py-16 bg-gray-800">
       <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-8 flex-wrap">
           <h2 class="section-title">Latest Financial News</h2>
           <div class="flex gap-2">
             <button class="filter-btn active">All</button>
@@ -563,13 +565,18 @@
           Get daily market insights and AI-powered analysis delivered to your
           inbox
         </p>
-        <form class="max-w-md mx-auto flex gap-2">
+        <form class="max-w-md mx-auto flex gap-3 flex-wrap">
           <input
             type="email"
             placeholder="Enter your email"
-            class="flex-1 px-4 py-3 rounded-lg text-gray-900"
+            class="flex-1 px-4 py-2 rounded-lg text-gray-300 border border-gray-300"
           />
-          <button type="submit" class="btn-white">Subscribe</button>
+          <button
+            type="submit"
+            class="p-3 bg-white text-blue-600 hover:bg-gray-100 rounded-lg font-semibold transition-colors cursor-pointer ml-auto"
+          >
+            Subscribe
+          </button>
         </form>
         <p class="mt-4 text-sm opacity-75">
           Join 50,000+ investors. No spam, unsubscribe anytime.
@@ -671,7 +678,11 @@
         </div>
       </div>
       <div class="chat-input">
-        <input type="text" placeholder="Ask me anything..." />
+        <input
+          type="text"
+          placeholder="Ask me anything..."
+          class="w-full border border-blue-600 focus:border-none rounded-2xl p-1 px-2 focus:outline-none"
+        />
         <button><i class="fas fa-paper-plane"></i></button>
       </div>
     </div>
