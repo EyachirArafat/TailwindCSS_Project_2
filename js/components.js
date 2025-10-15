@@ -347,7 +347,7 @@ export default class ComponentLoader {
             <a href="/" class="flex items-center gap-2">
               <img
                 class="h-10 md:h-12"
-                src="assets/images/tickerAI-logo.png"
+                src="/assets/images/tickerAI-logo.png"
                 alt="TickerAI"
               />
               <div class="hidden sm:block">
@@ -395,7 +395,7 @@ export default class ComponentLoader {
             <div class="relative">
               <button class="user-menu-btn" id="userMenuBtn">
                 <img
-                  src="assets/images/user-avatar.png"
+                  src="/assets/images/user-avatar.png"
                   alt="User"
                   class="w-8 h-8 rounded-full"
                 />
@@ -448,7 +448,7 @@ export default class ComponentLoader {
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <img src="assets/images/tickerAI-logo.png" alt="TickerAI" class="h-10 mb-4" />
+              <img src="/assets/images/tickerAI-logo.png" alt="TickerAI" class="h-10 mb-4" />
               <p class="text-gray-400 mb-4">
                 AI-powered financial intelligence platform providing real-time market insights.
               </p>
