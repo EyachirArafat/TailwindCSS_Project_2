@@ -59,14 +59,16 @@ export default class ComponentLoader {
 
           <!-- Right Section -->
           <div class="flex items-center gap-3">
+          <button class="btn-ai" id="aiChatBtn">
+              <i class="fas fa-robot"></i>
+              <span class="hidden md:inline">AI</span>
+            </button>
+            
             <button class="icon-btn relative" id="notificationsBtn">
               <i class="fas fa-bell"></i>
               <span class="notification-badge">3</span>
             </button>
-            <button class="btn-ai" id="aiChatBtn">
-              <i class="fas fa-robot"></i>
-              <span class="hidden md:inline">AI</span>
-            </button>
+            
             <div class="relative">
               <button class="user-menu-btn" id="userMenuBtn">
                 <img
