@@ -16,7 +16,7 @@ class ComponentLoader {
     if (!placeholder) return;
 
     const navbar = `
-      <nav class="navbar fixed top-0 w-full z-50 bg-gray-900 shadow-md transition-all duration-300">
+      <nav class="navbar fixed top-0 w-full z-[100] bg-gray-900 shadow-md transition-all duration-300">
         <div class="container mx-auto px-4">
           <div class="flex items-center justify-between py-4">
             <!-- Logo -->
@@ -98,7 +98,7 @@ class ComponentLoader {
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <img src="/assets/images/tickerAI-logo.png" alt="TickerAI" class="h-10 mb-4 brightness-0 invert">
+              <img src="/assets/images/tickerAI-logo.png" alt="TickerAI" class="h-10 mb-4 ">
               <p class="text-gray-400">AI-powered financial intelligence platform providing real-time market insights.</p>
               <div class="flex gap-3 mt-4">
                 <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>

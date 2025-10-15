@@ -7,29 +7,29 @@ class App {
   }
 
   init() {
-    this.setupTheme();
+    // this.setupTheme();
     this.setupNavigation();
     this.setupEventListeners();
     this.initializeModules();
   }
 
-  setupTheme() {
-    const theme = localStorage.getItem("theme") || "light";
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    }
+  // setupTheme() {
+  //   const theme = localStorage.getItem("theme") || "light";
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   }
 
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-        const newTheme = document.documentElement.classList.contains("dark")
-          ? "dark"
-          : "light";
-        localStorage.setItem("theme", newTheme);
-      });
-    }
-  }
+  //   const themeToggle = document.getElementById("themeToggle");
+  //   if (themeToggle) {
+  //     themeToggle.addEventListener("click", () => {
+  //       document.documentElement.classList.toggle("dark");
+  //       const newTheme = document.documentElement.classList.contains("dark")
+  //         ? "dark"
+  //         : "light";
+  //       localStorage.setItem("theme", newTheme);
+  //     });
+  //   }
+  // }
 
   setupNavigation() {
     // Sticky navigation
@@ -173,6 +173,39 @@ class App {
 }
 
 ///////////////////////////////
+// Theme Management
+// class ThemeManager {
+//   constructor() {
+//     this.theme = localStorage.getItem("theme") || "light";
+//     this.init();
+//   }
+
+//   init() {
+//     this.applyTheme();
+//     this.setupEventListeners();
+//   }
+
+//   applyTheme() {
+//     if (this.theme === "dark") {
+//       document.documentElement.classList.add("dark");
+//     } else {
+//       document.documentElement.classList.remove("dark");
+//     }
+//   }
+
+//   toggle() {
+//     this.theme = this.theme === "dark" ? "light" : "dark";
+//     localStorage.setItem("theme", this.theme);
+//     this.applyTheme();
+//   }
+
+//   setupEventListeners() {
+//     const toggleBtn = document.getElementById("themeToggle");
+//     if (toggleBtn) {
+//       toggleBtn.addEventListener("click", () => this.toggle());
+//     }
+//   }
+// }
 
 // Navigation Manager
 class NavigationManager {
@@ -530,7 +563,7 @@ class AnalyticsManager {
 // Initialize all managers when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize managers
-  const themeManager = new ThemeManager();
+  // const themeManager = new ThemeManager();
   const navManager = new NavigationManager();
   const marketManager = new MarketDataManager();
   const searchManager = new SearchManager();
@@ -540,7 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Make managers globally accessible if needed
   window.app = {
-    theme: themeManager,
+    // theme: themeManager,
     nav: navManager,
     market: marketManager,
     search: searchManager,

@@ -60,7 +60,7 @@ class NewsManager {
             timestamp: Date.now() - 2 * 60 * 60 * 1000, // 2 hours ago
             views: 1200,
             likes: 45,
-            bookmarked: false,
+            bookmarked: true,
           },
           {
             id: 2,
@@ -74,6 +74,35 @@ class NewsManager {
             timestamp: Date.now() - 4 * 60 * 60 * 1000, // 4 hours ago
             views: 3500,
             likes: 120,
+            bookmarked: false,
+          },
+          {
+            id: 3,
+            title:
+              "Stocks Fall as Inflation Risks Mount, Fed Signals Rate Hike",
+            summary:
+              "The S&P 500 dropped as investors worry about rising inflation and...",
+            image: "/assets/images/news-6.png",
+            category: "economy",
+            tags: ["Economy", "Fed"],
+            author: "Alice Johnson",
+            timestamp: Date.now() - 6 * 60 * 60 * 1000, // 6 hours ago
+            views: 2500,
+            likes: 80,
+            bookmarked: false,
+          },
+          {
+            id: 4,
+            title: "Tech Giants Reportedly Consider Buying Twitter",
+            summary:
+              "Several tech giants are reportedly considering a potential acquisition of Twitter...",
+            image: "/assets/images/news-7.png",
+            category: "tech",
+            tags: ["Tech", "Twitter"],
+            author: "Bob Smith",
+            timestamp: Date.now() - 8 * 60 * 60 * 1000, // 8 hours ago
+            views: 1800,
+            likes: 65,
             bookmarked: false,
           },
         ]);
@@ -104,7 +133,7 @@ class NewsManager {
                     )
                     .join("")}
                 </div>
-                <h3 class="font-bold text-lg mb-2 hover:text-blue-600 cursor-pointer" 
+                <h3 class="font-bold text-lg mb-2 text-white hover:text-blue-600 cursor-pointer" 
                     onclick="newsManager.openArticle(${article.id})">
                   ${article.title}
                 </h3>
