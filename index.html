@@ -20,7 +20,7 @@
     />
     <meta property="og:image" content="assets/og-image.png" />
 
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <!-- <link rel="icon" type="image/png" href="assets/favicon.png" /> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -43,7 +43,7 @@
             <a href="/" class="flex items-center gap-2">
               <img
                 class="h-10 md:h-12"
-                src="assets/images/tickerAI-logo.png"
+                src="/assets/images/tickerAI-logo.png"
                 alt="TickerAI"
               />
               <div class="hidden sm:block">
@@ -59,7 +59,7 @@
 
           <!-- Desktop Navigation -->
           <div class="hidden lg:flex items-center gap-6">
-            <a href="pages/dashboard.html" class="nav-link">Dashboard</a>
+            <a href="/pages/dashboard.html" class="nav-link">Dashboard</a>
 
             <!-- Markets Dropdown -->
             <div class="relative group">
@@ -74,17 +74,17 @@
               </div>
             </div>
 
-            <a href="pages/news.html" class="nav-link">News</a>
-            <a href="pages/analysis.html" class="nav-link">Analysis</a>
-            <a href="pages/portfolio.html" class="nav-link">Portfolio</a>
-            <a href="pages/about.html" class="nav-link">About</a>
-            <a href="pages/contact.html" class="nav-link">Contact</a>
+            <a href="/pages/news.html" class="nav-link">News</a>
+            <a href="/pages/analysis.html" class="nav-link">Analysis</a>
+            <a href="/pages/portfolio.html" class="nav-link">Portfolio</a>
+            <a href="/pages/about.html" class="nav-link">About</a>
+            <a href="/pages/contact.html" class="nav-link">Contact</a>
           </div>
 
           <!-- Right Section -->
           <div class="flex items-center gap-3">
             <!-- Search Bar (Desktop) -->
-            <div class="hidden md:block">
+            <!-- <div class="hidden md:block">
               <div class="search-container">
                 <input
                   type="text"
@@ -93,7 +93,7 @@
                 />
                 <i class="fas fa-search search-icon"></i>
               </div>
-            </div>
+            </div> -->
 
             <!-- Notification Bell -->
             <button class="icon-btn relative">
@@ -117,24 +117,24 @@
             <div class="relative">
               <button class="user-menu-btn" onclick="toggleUserMenu()">
                 <img
-                  src="assets/images/user-avatar.png"
+                  src="/assets/images/user-avatar.png"
                   alt="User"
                   class="w-8 h-8 rounded-full"
                 />
                 <i class="fas fa-chevron-down text-xs"></i>
               </button>
               <div class="user-dropdown hidden" id="userDropdown">
-                <a href="pages/dashboard.html" class="dropdown-item">
+                <a href="/pages/dashboard.html" class="dropdown-item">
                   <i class="fas fa-chart-line"></i> Dashboard
                 </a>
-                <a href="pages/portfolio.html" class="dropdown-item">
+                <a href="/pages/portfolio.html" class="dropdown-item">
                   <i class="fas fa-briefcase"></i> Portfolio
                 </a>
-                <a href="pages/settings.html" class="dropdown-item">
+                <a href="/pages/settings.html" class="dropdown-item">
                   <i class="fas fa-cog"></i> Settings
                 </a>
                 <hr class="my-2 border-gray-200" />
-                <a href="pages/login.html" class="dropdown-item text-red-600">
+                <a href="/pages/login.html" class="dropdown-item text-red-600">
                   <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
               </div>
@@ -156,11 +156,11 @@
         <div class="container mx-auto px-4 py-4 space-y-3 flex flex-col">
           <a href="/" class="mobile-menu-item">Home</a>
           <a href="#markets" class="mobile-menu-item">Markets</a>
-          <a href="pages/news.html" class="mobile-menu-item">News</a>
-          <a href="pages/analysis.html" class="mobile-menu-item">Analysis</a>
-          <a href="pages/portfolio.html" class="mobile-menu-item">Portfolio</a>
-          <a href="pages/about.html" class="mobile-menu-item">About</a>
-          <a href="pages/contact.html" class="mobile-menu-item">Contact</a>
+          <a href="/pages/news.html" class="mobile-menu-item">News</a>
+          <a href="/pages/analysis.html" class="mobile-menu-item">Analysis</a>
+          <a href="/pages/portfolio.html" class="mobile-menu-item">Portfolio</a>
+          <a href="/pages/about.html" class="mobile-menu-item">About</a>
+          <a href="/pages/contact.html" class="mobile-menu-item">Contact</a>
         </div>
       </div>
     </nav>
@@ -696,7 +696,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/api.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/api.js"></script>
   </body>
 </html>
