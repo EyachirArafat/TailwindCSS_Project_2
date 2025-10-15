@@ -840,6 +840,8 @@
 
 
 /* ==================================== */
+/* ==================================== */
+/* ==================================== */
 
 
 /* User Dropdown & Menu */
@@ -1242,3 +1244,129 @@ background-color: rgb(31 41 55);
   justify-content: center;
 }
 
+
+/* ==================================== */
+/* ==================================== */
+/* ==================================== */
+
+/* Team Card */
+.team-card {
+   background-color: rgb(47, 58, 73); /* gray-800 */
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.team-member-image {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  margin: 0 auto 1rem;
+  object-fit: cover;
+  border: 4px solid rgb(55 65 81); /* gray-700 */
+}
+
+.team-member-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+   color: white;
+}
+
+
+.team-member-role {
+  color: rgb(107 114 128); /* gray-500 */
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.team-member-bio {
+   color: rgb(156 163 175); /* gray-400 */
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.team-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.team-social-link {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243 244 246); /* gray-100 */
+  color: rgb(107 114 128); /* gray-500 */
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.team-social-link:hover {
+   background-color: rgb(55 65 81); /* gray-700 */
+  color: rgb(209 213 219); /* gray-300 */
+  transform: scale(1.1);
+}
+
+
+/* ==================================== */
+/* ==================================== */
+/* ==================================== */
+
+/* Settings Page Styles */
+.settings-nav-item {
+  @apply w-full text-left px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-3 mb-2;
+}
+
+.settings-nav-item.active {
+  @apply bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 font-semibold;
+}
+
+.settings-section {
+  @apply transition-all duration-300;
+}
+
+.settings-input {
+  @apply w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.toggle-switch {
+  @apply relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  background-color: #ccc;
+}
+
+.toggle-switch:checked {
+  background-color: #3b82f6;
+}
+
+.toggle-switch::after {
+  content: '';
+  @apply absolute left-[2px] bg-white rounded-full h-5 w-5 transition-transform;
+}
+
+.toggle-switch:checked::after {
+  transform: translateX(20px);
+}
+
+.btn-primary {
+  @apply px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center gap-2;
+}
+
+.btn-secondary {
+  @apply px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors inline-flex items-center gap-2;
+}
+
+.btn-danger {
+  @apply px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors inline-flex items-center gap-2;
+}
