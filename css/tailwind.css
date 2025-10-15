@@ -907,7 +907,7 @@
 
 /* Analysis Page */
 .stock-quick-link {
-  @apply px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer transition-all duration-20 hover:bg-blue-600 hover:text-whit dark:bg-gray-700 dark:hover:bg-blue-600;
+  @apply px-3 py-1 bg-gray-100 rounded-full text-sm cursor-pointer transition-all duration-20 hover:bg-blue-600 hover:text-white dark:bg-gray-700 dark:hover:bg-blue-600;
 }
 
 .chart-period-btn {
