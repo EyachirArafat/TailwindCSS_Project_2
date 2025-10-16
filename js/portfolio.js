@@ -156,18 +156,75 @@ class PortfolioManager {
               label: "Portfolio Value",
               data: this.generateGrowthData(12),
               borderColor: "#3B82F6",
-              backgroundColor: "#3B82F620",
+              backgroundColor: "rgba(59, 130, 246, 0.1)",
               borderWidth: 2,
               fill: true,
+              tension: 0.4,
+              pointRadius: 3,
+              pointHoverRadius: 5,
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          interaction: {
+            mode: "index",
+            intersect: false,
+          },
           plugins: {
             legend: {
-              display: false,
+              display: true,
+              position: "top",
+              labels: {
+                color: "#9CA3AF", // gray-400 for dark mode
+                font: {
+                  size: 12,
+                },
+              },
+            },
+            tooltip: {
+              backgroundColor: "rgba(31, 41, 55, 0.9)", // dark background
+              titleColor: "#F3F4F6",
+              bodyColor: "#F3F4F6",
+              borderColor: "#4B5563",
+              borderWidth: 1,
+              padding: 12,
+              displayColors: false,
+              callbacks: {
+                label: function (context) {
+                  return "Value: $" + context.parsed.y.toLocaleString();
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              grid: {
+                color: "rgba(75, 85, 99, 0.2)", // gray-600 with opacity
+                drawBorder: false,
+              },
+              ticks: {
+                color: "#9CA3AF", // gray-400
+                font: {
+                  size: 11,
+                },
+              },
+            },
+            y: {
+              grid: {
+                color: "rgba(75, 85, 99, 0.2)",
+                drawBorder: false,
+              },
+              ticks: {
+                color: "#9CA3AF",
+                font: {
+                  size: 11,
+                },
+                callback: function (value) {
+                  return "$" + (value / 1000).toFixed(0) + "k";
+                },
+              },
             },
           },
         },
@@ -179,25 +236,85 @@ class PortfolioManager {
     if (allocationCtx) {
       const allocationData = this.calculateAllocation();
       this.charts.allocation = new Chart(allocationCtx, {
-        type: "pie",
+        type: "doughnut",
         data: {
           labels: allocationData.labels,
           datasets: [
             {
               data: allocationData.values,
               backgroundColor: [
-                "#3B82F6",
-                "#10B981",
-                "#F59E0B",
-                "#EF4444",
-                "#8B5CF6",
+                "rgba(59, 130, 246, 0.8)", // blue
+                "rgba(16, 185, 129, 0.8)", // green
+                "rgba(245, 158, 11, 0.8)", // amber
+                "rgba(239, 68, 68, 0.8)", // red
+                "rgba(139, 92, 246, 0.8)", // purple
               ],
+              borderColor: [
+                "rgba(59, 130, 246, 1)",
+                "rgba(16, 185, 129, 1)",
+                "rgba(245, 158, 11, 1)",
+                "rgba(239, 68, 68, 1)",
+                "rgba(139, 92, 246, 1)",
+              ],
+              borderWidth: 2,
+              hoverOffset: 4,
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                color: "#9CA3AF",
+                padding: 15,
+                font: {
+                  size: 12,
+                },
+                generateLabels: function (chart) {
+                  const data = chart.data;
+                  if (data.labels.length && data.datasets.length) {
+                    const dataset = data.datasets[0];
+                    const total = dataset.data.reduce((a, b) => a + b, 0);
+
+                    return data.labels.map((label, i) => {
+                      const value = dataset.data[i];
+                      const percentage = ((value / total) * 100).toFixed(1);
+
+                      return {
+                        text: `${label}: ${percentage}%`,
+                        fillStyle: dataset.backgroundColor[i],
+                        strokeStyle: dataset.borderColor[i],
+                        lineWidth: 2,
+                        hidden: false,
+                        index: i,
+                      };
+                    });
+                  }
+                  return [];
+                },
+              },
+            },
+            tooltip: {
+              backgroundColor: "rgba(31, 41, 55, 0.9)",
+              titleColor: "#F3F4F6",
+              bodyColor: "#F3F4F6",
+              borderColor: "#4B5563",
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || "";
+                  const value = context.parsed;
+                  const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                  const percentage = ((value / total) * 100).toFixed(1);
+                  return `${label}: $${value.toLocaleString()} (${percentage}%)`;
+                },
+              },
+            },
+          },
         },
       });
     }

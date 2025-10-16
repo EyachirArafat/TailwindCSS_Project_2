@@ -4,7 +4,7 @@ class AnalysisManager {
   constructor() {
     this.currentSymbol = null;
     this.charts = {};
-    this.activeTab = 'technical';
+    this.activeTab = "technical";
     this.init();
   }
 
@@ -15,37 +15,40 @@ class AnalysisManager {
 
   checkUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
-    const symbol = urlParams.get('symbol');
+    const symbol = urlParams.get("symbol");
     if (symbol) {
-      document.getElementById('stockSearch').value = symbol;
+      document.getElementById("stockSearch").value = symbol;
       this.analyzeStock(symbol);
     }
   }
 
   setupEventListeners() {
     // Tab navigation
-    document.querySelectorAll('.analysis-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
+    document.querySelectorAll(".analysis-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
         this.switchTab(tab.dataset.tab);
       });
     });
 
     // Chart period buttons
-    document.querySelectorAll('.chart-period-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+    document.querySelectorAll(".chart-period-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
         this.updateChartPeriod(btn.textContent);
       });
     });
 
     // Quick analyze buttons
     window.quickAnalyze = (symbol) => {
-      document.getElementById('stockSearch').value = symbol;
+      document.getElementById("stockSearch").value = symbol;
       this.analyzeStock(symbol);
     };
 
     // Analyze button
     window.analyzeStock = () => {
-      const symbol = document.getElementById('stockSearch').value.trim().toUpperCase();
+      const symbol = document
+        .getElementById("stockSearch")
+        .value.trim()
+        .toUpperCase();
       if (symbol) {
         this.analyzeStock(symbol);
       }
@@ -54,18 +57,18 @@ class AnalysisManager {
 
   async analyzeStock(symbol) {
     this.currentSymbol = symbol;
-    
+
     // Show loading state
     this.showLoadingState();
 
     try {
       // Fetch stock data
       const stockData = await this.fetchStockData(symbol);
-      
+
       // Update UI
       this.updateStockHeader(stockData);
       this.showAnalysisResults();
-      
+
       // Initialize charts and analysis
       this.initPriceChart(stockData);
       this.loadTechnicalAnalysis(stockData);
@@ -73,8 +76,8 @@ class AnalysisManager {
       this.loadSentimentAnalysis(stockData);
       this.loadAIInsights(stockData);
     } catch (error) {
-      console.error('Error analyzing stock:', error);
-      app.showNotification('Failed to analyze stock', 'error');
+      console.error("Error analyzing stock:", error);
+      app.showNotification("Failed to analyze stock", "error");
     } finally {
       this.hideLoadingState();
     }
@@ -98,7 +101,7 @@ class AnalysisManager {
           beta: 1.23,
           high52w: 199.62,
           low52w: 164.08,
-          priceData: this.generatePriceData()
+          priceData: this.generatePriceData(),
         });
       }, 1000);
     });
@@ -106,11 +109,11 @@ class AnalysisManager {
 
   getCompanyName(symbol) {
     const companies = {
-      'AAPL': 'Apple Inc.',
-      'GOOGL': 'Alphabet Inc.',
-      'MSFT': 'Microsoft Corporation',
-      'TSLA': 'Tesla, Inc.',
-      'NVDA': 'NVIDIA Corporation'
+      AAPL: "Apple Inc.",
+      GOOGL: "Alphabet Inc.",
+      MSFT: "Microsoft Corporation",
+      TSLA: "Tesla, Inc.",
+      NVDA: "NVIDIA Corporation",
     };
     return companies[symbol] || symbol;
   }
@@ -119,34 +122,34 @@ class AnalysisManager {
     const data = [];
     const days = 90;
     let price = 180;
-    
+
     for (let i = 0; i < days; i++) {
       const date = new Date();
       date.setDate(date.getDate() - (days - i));
-      
+
       // Simulate price movement
       price += (Math.random() - 0.48) * 3;
       const high = price + Math.random() * 2;
       const low = price - Math.random() * 2;
       const close = low + Math.random() * (high - low);
-      
+
       data.push({
-        date: date.toISOString().split('T')[0],
+        date: date.toISOString().split("T")[0],
         open: price,
         high: high,
         low: low,
         close: close,
-        volume: Math.floor(40000000 + Math.random() * 20000000)
+        volume: Math.floor(40000000 + Math.random() * 20000000),
       });
-      
+
       price = close;
     }
-    
+
     return data;
   }
 
   updateStockHeader(data) {
-    const header = document.querySelector('#analysisResults .stock-header');
+    const header = document.querySelector("#analysisResults .stock-header");
     if (!header) return;
 
     // Update stock info in header
@@ -154,11 +157,11 @@ class AnalysisManager {
   }
 
   showAnalysisResults() {
-    document.getElementById('analysisResults').classList.remove('hidden');
+    document.getElementById("analysisResults").classList.remove("hidden");
   }
 
   initPriceChart(stockData) {
-    const ctx = document.getElementById('priceChart');
+    const ctx = document.getElementById("priceChart");
     if (!ctx) return;
 
     // Destroy existing chart if any
@@ -166,79 +169,176 @@ class AnalysisManager {
       this.charts.price.destroy();
     }
 
-    this.charts.price = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: stockData.priceData.map(d => d.date),
-        datasets: [{
-          label: 'Close Price',
-          data: stockData.priceData.map(d => d.close),
-          borderColor: '#3B82F6',
-          backgroundColor: '#3B82F620',
+    // Prepare candlestick/OHLC data
+    const chartData = {
+      labels: stockData.priceData.map((d) => {
+        const date = new Date(d.date);
+        return date.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+        });
+      }),
+      datasets: [
+        {
+          label: "Close Price",
+          data: stockData.priceData.map((d) => d.close),
+          borderColor: "#3B82F6",
+          backgroundColor: "rgba(59, 130, 246, 0.1)",
           borderWidth: 2,
           fill: true,
-          tension: 0.1
-        }]
-      },
+          tension: 0.1,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: "#3B82F6",
+        },
+        {
+          label: "Volume",
+          data: stockData.priceData.map((d) => d.volume),
+          type: "bar",
+          backgroundColor: "rgba(107, 114, 128, 0.3)",
+          yAxisID: "volume",
+          hidden: true, // Initially hidden
+        },
+      ],
+    };
+
+    this.charts.price = new Chart(ctx, {
+      type: "line",
+      data: chartData,
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        interaction: {
+          mode: "index",
+          intersect: false,
+        },
         plugins: {
           legend: {
-            display: false
+            display: true,
+            position: "top",
+            labels: {
+              color: "#9CA3AF",
+              usePointStyle: true,
+              padding: 15,
+              font: {
+                size: 12,
+              },
+            },
           },
           tooltip: {
-            mode: 'index',
-            intersect: false,
+            backgroundColor: "rgba(31, 41, 55, 0.95)",
+            titleColor: "#F3F4F6",
+            bodyColor: "#F3F4F6",
+            borderColor: "#4B5563",
+            borderWidth: 1,
+            padding: 12,
+            displayColors: true,
             callbacks: {
+              title: (tooltipItems) => {
+                return tooltipItems[0].label;
+              },
               label: (context) => {
+                if (context.dataset.label === "Volume") {
+                  return `Volume: ${(context.parsed.y / 1000000).toFixed(2)}M`;
+                }
                 return `Price: $${context.parsed.y.toFixed(2)}`;
-              }
-            }
-          }
+              },
+            },
+          },
+          // Add zoom plugin if needed
+          zoom: {
+            zoom: {
+              wheel: {
+                enabled: true,
+              },
+              pinch: {
+                enabled: true,
+              },
+              mode: "x",
+            },
+            pan: {
+              enabled: true,
+              mode: "x",
+            },
+          },
         },
         scales: {
           x: {
             display: true,
             grid: {
-              display: false
-            }
+              color: "rgba(75, 85, 99, 0.2)",
+              drawBorder: false,
+            },
+            ticks: {
+              color: "#9CA3AF",
+              maxRotation: 0,
+              maxTicksLimit: 10,
+              font: {
+                size: 11,
+              },
+            },
           },
           y: {
             display: true,
-            position: 'right',
+            position: "left",
+            grid: {
+              color: "rgba(75, 85, 99, 0.2)",
+              drawBorder: false,
+            },
             ticks: {
-              callback: (value) => `$${value}`
-            }
-          }
-        }
-      }
+              color: "#9CA3AF",
+              font: {
+                size: 11,
+              },
+              callback: function (value) {
+                return "$" + value.toFixed(0);
+              },
+            },
+          },
+          volume: {
+            display: false,
+            position: "right",
+            grid: {
+              drawOnChartArea: false,
+            },
+            ticks: {
+              color: "#9CA3AF",
+              font: {
+                size: 11,
+              },
+              callback: function (value) {
+                return (value / 1000000).toFixed(0) + "M";
+              },
+            },
+          },
+        },
+      },
     });
   }
 
   loadTechnicalAnalysis(stockData) {
     // Calculate technical indicators
     const indicators = this.calculateTechnicalIndicators(stockData.priceData);
-    
+
     // Update UI with indicators
     this.updateTechnicalIndicators(indicators);
   }
 
   calculateTechnicalIndicators(priceData) {
     // Simple calculations for demo
-    const prices = priceData.map(d => d.close);
+    const prices = priceData.map((d) => d.close);
     const lastPrice = prices[prices.length - 1];
-    
+
     return {
       ma20: this.calculateMA(prices, 20),
       ma50: this.calculateMA(prices, 50),
       ma200: this.calculateMA(prices, 200),
       rsi: this.calculateRSI(prices),
-      macd: 'Bullish',
+      macd: "Bullish",
       stochastic: 72.3,
       resistance: lastPrice * 1.03,
       support: lastPrice * 0.96,
-      pivot: lastPrice
+      pivot: lastPrice,
     };
   }
 
@@ -255,12 +355,13 @@ class AnalysisManager {
 
   updateTechnicalIndicators(indicators) {
     // Update DOM with indicator values
-    Object.keys(indicators).forEach(key => {
+    Object.keys(indicators).forEach((key) => {
       const element = document.querySelector(`[data-indicator="${key}"]`);
       if (element) {
-        const value = typeof indicators[key] === 'number' 
-          ? indicators[key].toFixed(2) 
-          : indicators[key];
+        const value =
+          typeof indicators[key] === "number"
+            ? indicators[key].toFixed(2)
+            : indicators[key];
         element.textContent = value;
       }
     });
@@ -272,10 +373,10 @@ class AnalysisManager {
       marketCap: utils.formatCurrency(stockData.marketCap),
       pe: stockData.pe.toFixed(2),
       eps: `$${stockData.eps.toFixed(2)}`,
-      dividend: `${stockData.dividend}%`
+      dividend: `${stockData.dividend}%`,
     };
 
-    Object.keys(metrics).forEach(key => {
+    Object.keys(metrics).forEach((key) => {
       const element = document.querySelector(`[data-fundamental="${key}"]`);
       if (element) {
         element.textContent = metrics[key];
@@ -295,8 +396,8 @@ class AnalysisManager {
         buy: 12,
         hold: 8,
         sell: 2,
-        strongSell: 0
-      }
+        strongSell: 0,
+      },
     };
 
     this.updateSentimentUI(sentiment);
@@ -304,14 +405,16 @@ class AnalysisManager {
 
   updateSentimentUI(sentiment) {
     // Update sentiment gauge
-    const gauge = document.querySelector('.sentiment-gauge .progress-bar');
+    const gauge = document.querySelector(".sentiment-gauge .progress-bar");
     if (gauge) {
       gauge.style.width = `${sentiment.overall}%`;
     }
 
     // Update social sentiment
-    ['twitter', 'reddit', 'news'].forEach(source => {
-      const element = document.querySelector(`[data-sentiment-source="${source}"]`);
+    ["twitter", "reddit", "news"].forEach((source) => {
+      const element = document.querySelector(
+        `[data-sentiment-source="${source}"]`
+      );
       if (element) {
         element.textContent = `+${sentiment[source]}%`;
       }
@@ -324,18 +427,18 @@ class AnalysisManager {
       summary: `Based on our AI analysis of technical indicators, fundamental metrics, and market sentiment, 
                 ${stockData.symbol} shows strong bullish signals with a predicted price target of $205 within the next 3 months.`,
       confidence: 82,
-      priceTarget: 205.00,
-      riskLevel: 'Medium',
+      priceTarget: 205.0,
+      riskLevel: "Medium",
       bullishFactors: [
-        'Strong earnings growth trajectory',
-        'Positive analyst consensus',
-        'Technical breakout above resistance'
+        "Strong earnings growth trajectory",
+        "Positive analyst consensus",
+        "Technical breakout above resistance",
       ],
       riskFactors: [
-        'High valuation metrics',
-        'Regulatory concerns in EU',
-        'Supply chain uncertainties'
-      ]
+        "High valuation metrics",
+        "Regulatory concerns in EU",
+        "Supply chain uncertainties",
+      ],
     };
 
     this.updateAIInsightsUI(insights);
@@ -348,13 +451,13 @@ class AnalysisManager {
 
   switchTab(tabName) {
     // Update active tab
-    document.querySelectorAll('.analysis-tab').forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.tab === tabName);
+    document.querySelectorAll(".analysis-tab").forEach((tab) => {
+      tab.classList.toggle("active", tab.dataset.tab === tabName);
     });
 
     // Show/hide tab content
-    document.querySelectorAll('.analysis-tab-content').forEach(content => {
-      content.classList.toggle('hidden', !content.id.includes(tabName));
+    document.querySelectorAll(".analysis-tab-content").forEach((content) => {
+      content.classList.toggle("hidden", !content.id.includes(tabName));
     });
 
     this.activeTab = tabName;
@@ -362,17 +465,18 @@ class AnalysisManager {
 
   updateChartPeriod(period) {
     // Update chart based on selected period
-    const days = {
-      '1D': 1,
-      '1W': 7,
-      '1M': 30,
-      '3M': 90,
-      '1Y': 365
-    }[period] || 30;
+    const days =
+      {
+        "1D": 1,
+        "1W": 7,
+        "1M": 30,
+        "3M": 90,
+        "1Y": 365,
+      }[period] || 30;
 
     // Update active button
-    document.querySelectorAll('.chart-period-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent === period);
+    document.querySelectorAll(".chart-period-btn").forEach((btn) => {
+      btn.classList.toggle("active", btn.textContent === period);
     });
 
     // Reload chart with new data
@@ -388,24 +492,24 @@ class AnalysisManager {
 
   showLoadingState() {
     // Show loading indicator
-    const results = document.getElementById('analysisResults');
+    const results = document.getElementById("analysisResults");
     if (results) {
-      results.classList.add('loading');
+      results.classList.add("loading");
     }
   }
 
   hideLoadingState() {
     // Hide loading indicator
-    const results = document.getElementById('analysisResults');
+    const results = document.getElementById("analysisResults");
     if (results) {
-      results.classList.remove('loading');
+      results.classList.remove("loading");
     }
   }
 }
 
 // Initialize analysis manager
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('stockSearch')) {
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("stockSearch")) {
     window.analysisManager = new AnalysisManager();
   }
 });

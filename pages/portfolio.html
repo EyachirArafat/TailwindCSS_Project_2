@@ -100,7 +100,7 @@
       </div>
 
       <!-- Tabs -->
-      <div class="bg-gray-800 rounded-lg shadow-lg">
+      <div class="bg-gray-800 rounded-lg shadow-lg overflow-x-auto text-nowrap">
         <div class="border-b border-gray-700">
           <nav class="flex">
             <button class="portfolio-tab active" data-tab="holdings">
@@ -257,15 +257,35 @@
           <div class="p-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <!-- Performance Chart -->
-              <div>
+              <!-- <div>
                 <h3 class="font-bold text-lg mb-4">Portfolio Performance</h3>
                 <canvas id="performanceChart" height="300"></canvas>
+              </div> -->
+              <div>
+                <h3 class="font-bold text-lg mb-4">Portfolio Performance</h3>
+                <!-- Chart wrapper with fixed height -->
+                <div
+                  class="chart-container"
+                  style="position: relative; height: 300px"
+                >
+                  <canvas id="performanceChart"></canvas>
+                </div>
               </div>
 
               <!-- Allocation Chart -->
-              <div>
+              <!-- <div>
                 <h3 class="font-bold text-lg mb-4">Asset Allocation</h3>
                 <canvas id="allocationChart" height="300"></canvas>
+              </div> -->
+              <div>
+                <h3 class="font-bold text-lg mb-4">Asset Allocation</h3>
+                <!-- Chart wrapper with fixed height -->
+                <div
+                  class="chart-container"
+                  style="position: relative; height: 300px"
+                >
+                  <canvas id="allocationChart"></canvas>
+                </div>
               </div>
             </div>
 
