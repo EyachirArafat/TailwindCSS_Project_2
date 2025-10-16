@@ -188,94 +188,23 @@ ticker-ai/
   <img src="./public/assets/images/screenshots/homepage.jpeg" alt="Homepage" width="800"/>
   
   <h3>📊 Dashboard</h3>
-  <img src="screenshots/dashboard.png" alt="Dashboard" width="800"/>
+  <img src="./public/assets/images/screenshots/dashboard.jpeg" alt="Dashboard" width="800"/>
   
   <h3>📰 News Feed</h3>
-  <img src="screenshots/news.png" alt="News Feed" width="800"/>
+  <img src="./public/assets/images/screenshots/news.jpeg" alt="News Feed" width="800"/>
   
   <h3>💼 Portfolio</h3>
-  <img src="screenshots/portfolio.png" alt="Portfolio" width="800"/>
+  <img src="./public/assets/images/screenshots/portfolio.jpeg" alt="Portfolio" width="800"/>
+
+  <h3>📈 Analysis</h3>
+  <img src="./public/assets/images/screenshots/analysis.jpeg" alt="Portfolio" width="800"/>
+
+  <h3>👤 About</h3>
+  <img src="./public/assets/images/screenshots/about.jpeg" alt="Portfolio" width="800"/>
+
+  <h3>📈 Analysis</h3>
+  <img src="./public/assets/images/screenshots/contact.jpeg" alt="Portfolio" width="800"/>
 </div>
-
-## 🔧 Configuration
-
-### Tailwind CSS Configuration
-
-The project uses Tailwind CSS v4 with custom configuration:
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  content: ["./index.html", "./pages/**/*.html", "./js/**/*.js"],
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        primary: { /* custom colors */ },
-        dark: { /* dark mode colors */ }
-      }
-    }
-  }
-}
-```
-
-### API Configuration
-
-Configure API endpoints in `js/api.js`:
-
-```javascript
-const API_CONFIG = {
-  baseURL: process.env.VITE_API_BASE_URL,
-  timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}
-```
-
-## 📚 API Documentation
-
-### Authentication
-
-```javascript
-// Login
-POST /api/auth/login
-{
-  "email": "user@example.com",
-  "password": "password123"
-}
-
-// Register
-POST /api/auth/register
-{
-  "name": "John Doe",
-  "email": "user@example.com",
-  "password": "password123"
-}
-```
-
-### Market Data
-
-```javascript
-// Get market overview
-GET /api/market/overview
-
-// Get stock quote
-GET /api/stocks/{symbol}/quote
-
-// Get trending stocks
-GET /api/stocks/trending
-```
-
-### News
-
-```javascript
-// Get latest news
-GET /api/news/latest?category=all&limit=10
-
-// Search news
-GET /api/news/search?q=bitcoin
-```
 
 ## 🤝 Contributing
 
@@ -355,12 +284,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Tailwind CSS](https://tailwindcss.com) - For the amazing CSS framework
 - [Font Awesome](https://fontawesome.com) - For the icon library
 - [Chart.js](https://www.chartjs.org) - For data visualization
-- [Unsplash](https://unsplash.com) - For stock images
 - All contributors who helped with this project
 
 ## 📞 Support
 
-For support, email support@tickerai.com or join our [Discord server](https://discord.gg/tickerai).
+For support, email support@tickerai.com or visit our [GitHub repository](https://github.com/EyachirArafat/ticker_AI_project/issues).
 
 ## 🚦 Project Status
 
@@ -379,31 +307,31 @@ This project is actively maintained and under continuous development.
 
 ## 📊 Stats
 
-![GitHub stars](https://img.shields.io/github/stars/EyachirArafat/TailwindCSS_Project_2?style=social)
-![GitHub forks](https://img.shields.io/github/forks/EyachirArafat/TailwindCSS_Project_2?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/EyachirArafat/TailwindCSS_Project_2?style=social)
-![GitHub contributors](https://img.shields.io/github/contributors/EyachirArafat/TailwindCSS_Project_2)
-![GitHub last commit](https://img.shields.io/github/last-commit/EyachirArafat/TailwindCSS_Project_2)
+![GitHub stars](https://img.shields.io/github/stars/EyachirArafat/ticker_AI_project?style=social)
+![GitHub forks](https://img.shields.io/github/forks/EyachirArafat/ticker_AI_project?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/EyachirArafat/ticker_AI_project?style=social)
+![GitHub contributors](https://img.shields.io/github/contributors/EyachirArafat/ticker_AI_project)
+![GitHub last commit](https://img.shields.io/github/last-commit/EyachirArafat/ticker_AI_project)
 
 ---
 
 <div align="center">
   <p>Made with ❤️ by <a href="https://github.com/EyachirArafat">Eyachir Arafat</a></p>
   <p>
-    <a href="https://twitter.com/tickerai">Twitter</a> •
-    <a href="https://linkedin.com/company/tickerai">LinkedIn</a> •
-    <a href="https://www.youtube.com/@tickerai">YouTube</a> •
-    <a href="https://www.instagram.com/tickerai">Instagram</a>
+    <a href="https://twitter.com/eyachir_arafat">Twitter</a> •
+    <a href="https://linkedin.com/company/EzyonLabs">LinkedIn</a> •
+    <a href="https://www.youtube.com/@EyachirArafat">YouTube</a> •
+    <a href="https://www.instagram.com/EzyonLabs">Instagram</a>
   </p>
 </div>
 
 ## 🔗 Links
 
-- **Website**: [https://tickerai.com](https://tickerai.com)
-- **Documentation**: [https://docs.tickerai.com](https://docs.tickerai.com)
-- **API Reference**: [https://api.tickerai.com/docs](https://api.tickerai.com/docs)
-- **Blog**: [https://blog.tickerai.com](https://blog.tickerai.com)
-- **Status Page**: [https://status.tickerai.com](https://status.tickerai.com)
+- **Website**: [https://tickerai-iota.vercel.app/](https://tickerai.com)
+- **Documentation**: [https://tickerai-iota.vercel.app/](https://docs.tickerai.com)
+- **API Reference**: [https://tickerai-iota.vercel.app/](https://api.tickerai.com/docs)
+- **Blog**: [https://tickerai-iota.vercel.app/](https://blog.tickerai.com)
+- **Status Page**: [https://tickerai-iota.vercel.app/](https://status.tickerai.com)
 
 ---
 

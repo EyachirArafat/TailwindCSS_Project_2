@@ -827,39 +827,31 @@
   @apply block;
 }
 
-/* Modal */
-/* .modal {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 50;
-}
 
-.modal-content {
-  background-color: rgb(31 41 55); 
-  border-radius: 0.5rem;
-  width: 90%;
-  max-width: 32rem;
-  max-height: 90vh;
-  overflow-y: auto;
+ .modal{
+  @apply fixed inset-0 bg-gray-900/70 items-center justify-center;
 }
 
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid rgb(55 65 81); 
+/* When modal is active/shown */
+.modal.show,
+.modal:not(.hidden) {
+  @apply flex;
+}
+
+.modal-content{
+  @apply bg-gray-800 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] max-w-[32rem];
+}
+
+.modal-header{
+  @apply p-6 flex items-start justify-between rounded-t border-b border-gray-200 dark:border-gray-600;
 }
 
 
 .modal-body {
-  padding: 1.5rem;
-} */
+  @apply p-6;
+}
+
 
 /* Registration Steps */
 .step {
@@ -952,12 +944,12 @@
 
 /* Portfolio Summary Card */
 .portfolio-summary-card {
-  @apply bg-gray-800 p-6 rounded-lg shadow-lg;
+  @apply bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden;
 }
 
 /* Icon Circle */
 .icon-circle {
-  @apply w-12 h-12 rounded-lg flex items-center justify-center;
+  @apply w-12 h-12 rounded-lg flex items-center justify-center p-3;
 }
 
 /* ==================================== */
