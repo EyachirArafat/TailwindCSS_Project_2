@@ -197,13 +197,25 @@ ticker-ai/
   <img src="./public/assets/images/screenshots/portfolio.jpeg" alt="Portfolio" width="800"/>
 
   <h3>📈 Analysis</h3>
-  <img src="./public/assets/images/screenshots/analysis.jpeg" alt="Portfolio" width="800"/>
+  <img src="./public/assets/images/screenshots/analysis.jpeg" alt="analysis" width="800"/>
 
   <h3>👤 About</h3>
-  <img src="./public/assets/images/screenshots/about.jpeg" alt="Portfolio" width="800"/>
+  <img src="./public/assets/images/screenshots/about.jpeg" alt="about" width="800"/>
 
   <h3>📈 Analysis</h3>
-  <img src="./public/assets/images/screenshots/contact.jpeg" alt="Portfolio" width="800"/>
+  <img src="./public/assets/images/screenshots/contact.jpeg" alt="contact" width="800"/>
+  
+  <h3>⚙️ Settings</h3>
+  <img src="./public/assets/images/screenshots/settings/setting-1.jpeg" alt="settings" width="800"/>
+  <img src="./public/assets/images/screenshots/settings/setting-2.jpeg" alt="settings" width="800"/>
+  <img src="./public/assets/images/screenshots/settings/setting-3.jpeg" alt="settings" width="800"/>
+  <img src="./public/assets/images/screenshots/settings/setting-4.jpeg" alt="settings" width="800"/>
+  <img src="./public/assets/images/screenshots/settings/setting-5.jpeg" alt="settings" width="800"/>
+  <img src="./public/assets/images/screenshots/settings/setting-6.jpeg" alt="settings" width="800"/>
+  <img src="./public/assets/images/screenshots/settings/setting-7.jpeg" alt="settings" width="800"/>
+
+
+
 </div>
 
 ## 🤝 Contributing
